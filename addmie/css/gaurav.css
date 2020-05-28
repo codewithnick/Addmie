@@ -1,0 +1,49 @@
+.containers {
+	box-shadow: 0px 4px 15px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.3);
+	float: left;
+	margin: 50px 50px;
+	}
+
+.float-right{
+	float: right;
+	box-shadow: 0px 4px 15px 0 rgba(0, 0, 0, 0.2), 0 5px 18px 0 rgba(0, 0, 0, 0.3);
+	position: relative;
+	margin-top: 50px;
+	margin-right: 250px;
+}
+.center {
+	text-align: center;
+	padding: 5px;
+	box-shadow: 0px 4px 15px 0 rgba(0, 0, 0, 0.2);
+	color: red;
+	font-size: 15px;
+}
+.gaurav {
+padding: 20px;
+font-size: 15px;
+}
+.gaurav input[type=text], input[type=submit] {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 700px) {
+  .row {   
+	flex-direction: column;
+  }
+  .float-right {
+	  float: left;
+	  margin-right:auto;
+	  margin-left: 50px;
+	  margin-top: 20px;
+  }
+}
+.gaurav input[type=submit]:hover {
+	background-color: lightblue;
+	color: red;
+	font-size: 15px;
+	box-shadow: 5px 2px 10px black;
+}
