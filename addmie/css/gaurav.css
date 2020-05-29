@@ -1,32 +1,32 @@
-.containers {
+.containerss {
 	box-shadow: 0px 4px 15px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.3);
 	float: left;
-	margin: 50px 50px;
+	margin: 50px;
+	margin-left: 190px;
 	}
 
 .float-right{
 	float: right;
-	box-shadow: 0px 4px 15px 0 rgba(0, 0, 0, 0.2), 0 5px 18px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 4px 15px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.3);
 	position: relative;
-	margin-top: 50px;
-	margin-right: 250px;
+	margin: 50px;
+	margin-left: 200px;
 }
 .center {
 	text-align: center;
 	padding: 5px;
 	box-shadow: 0px 4px 15px 0 rgba(0, 0, 0, 0.2);
-	color: red;
+	color: #00b9ed;
 	font-size: 15px;
 }
-.gaurav {
+.form-inside {
 padding: 20px;
 font-size: 15px;
 }
-.gaurav input[type=text], input[type=submit] {
+.form-inside input[type=text], input[type=submit] {
   width: 100%;
   padding: 12px;
   margin: 6px 0;
-  display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
@@ -36,14 +36,17 @@ font-size: 15px;
   }
   .float-right {
 	  float: left;
-	  margin-right:auto;
-	  margin-left: 50px;
+	  margin-right:40px;
+	  margin-left: 40px;
 	  margin-top: 20px;
   }
+  .containerss {
+	margin: 50px 40px;
+	}
 }
-.gaurav input[type=submit]:hover {
+.form-inside input[type=submit]:hover {
 	background-color: lightblue;
-	color: red;
+	color: #00b9ed;
 	font-size: 15px;
 	box-shadow: 5px 2px 10px black;
 }

@@ -1,0 +1,21 @@
+node_modules
+install_tools.bat      
+nodemon.ps1*  
+sshkey
+CHANGELOG.md  
+LICENSE
+nodevars.bat  
+sshkey.pub
+node.exe*              
+npm*          
+sshkey.txt
+node_etw_provider.man  
+npm.cmd
+ejs*   
+ npx*
+ejs.cmd       
+nodemon*               
+npx.cmd
+ejs.ps1*      
+nodemon.cmd            
+

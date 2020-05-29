@@ -4,13 +4,14 @@
 <title>Addmie</title>
 <link rel = "icon" type = "image/png" href = "Addmie.png"> </link>
 <link rel="stylesheet" type="text/css" href="addmie/css/styles.css">
+<link rel="stylesheet" type="text/css" href="addmie/css/gaurav.css">
 </head>
 <body >
-	<div class="entry-container">
-		<div class="signup" style="width: 50%;">
-			<h1>New Here,</h1>
-			<h3>Signup Here</h3>			
-            <form action="signup" method='post'>
+	<div class="entry-container row">
+		<div class="signup containerss col">
+			<h1 class="center">New Here,</h1>
+			<h3 class="center">Signup Here</h3>			
+            <form action="signup" class="form-inside" method='post'>
                 username<input type='text' name='Username' required/><br>
 				password<input type="text" name='Password' required/><br>
 				Firstname<input type="text" name='Fname' required/><br>
@@ -20,12 +21,12 @@
                 <input type='submit' name='Submit'/>
             </form>
 		</div>
-		<div class="login" style="width: 50%;">
-			<h1>Already a Member</h1>
-			<h3>Login Here</h3>
-			<form action="login" method='POST'>
-				username<input type='text' name='Username' required/><br>
-				password<input type='text' name='Password' required/>
+		<div class="login float-right col" style="height: 300px;">
+			<h1 class="center">Already a Member</h1>
+			<h3 class="center">Login Here</h3>
+			<form action="login" class="form-inside" method='POST'>
+				username<input type='text' name='User' required/><br>
+				password<input type='text' name='Pass' required/>
 				<input type="submit" name='submit'>
 
 			</form>

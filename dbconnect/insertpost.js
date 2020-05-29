@@ -1,8 +1,5 @@
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://dbuser:JZf111qVS2zqKVfs@addmie-ybdhy.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, {useUnifiedTopology:true}); 
 var result=null;
-module.exports = async function dbconnect(req)
+module.exports = async function dbconnect(req,client)
 {       console.log(req.body.text);
         console.log(req.params.username);
         let today = new Date();
@@ -18,8 +15,8 @@ module.exports = async function dbconnect(req)
         };
        try {
         // Connect to the MongoDB cluster
-        await client.connect();
-        console.log('client connected sucessfully');
+        //await client.connect();
+        //console.log('client connected sucessfully');
         // Make the appropriate DB calls
         result=await client.db('profile').collection('post').insertOne(postobj);
         //console.log(result);
@@ -30,7 +27,7 @@ module.exports = async function dbconnect(req)
 
     } finally {
         console.log('closing client connection');
-        await client.close();
+        //await client.close();
     
     }
 

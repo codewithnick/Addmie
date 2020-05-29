@@ -4,7 +4,7 @@ async function adduser(client,userobj){
    // console.log(result);
 
 };
-module.exports=async function main(username,password,fname,lname,dob,email){
+module.exports=async function main(username,password,fname,lname,dob,email,client){
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -20,12 +20,9 @@ module.exports=async function main(username,password,fname,lname,dob,email){
         active:0,
         friends: ['m416','akm']
     };
-    const MongoClient = require('mongodb').MongoClient;
-    const uri = "mongodb+srv://dbuser:JZf111qVS2zqKVfs@addmie-ybdhy.mongodb.net/test?retryWrites=true&w=majority";
-    const client = new MongoClient(uri, {useUnifiedTopology:true}); 
         try {
         // Connect to the MongoDB cluster
-        await client.connect();
+        //await client.connect();
         console.log('client connected sucessfully');
         // Make the appropriate DB calls
         await  adduser(client,userobj);
@@ -33,6 +30,6 @@ module.exports=async function main(username,password,fname,lname,dob,email){
         console.log('error connecting to db');
         console.error(e);
     } finally {
-        await client.close();
+        //await client.close();
     }
 }
