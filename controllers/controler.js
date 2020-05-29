@@ -5,16 +5,17 @@ let bodyparserencoder=require('body-parser');
 bodyparserencoder = bodyparserencoder.urlencoded({ extended: false })
 module.exports=function(app){
     app.get('/',function(req,res){
+        req.session.loggedIn=true;
         res.render('Addmie.ejs');
     });
     //request handling when login is requested
     app.post('/login',bodyparserencoder,function(req,res){
-        
             console.log('login requested');
             let query=require('../'+'dbconnect/'+'login.js');
             let exists=query.login({username:req.body.Username,password:req.body.Password},res,req);
             //console.log('everything done, exists= ' + exists);
-            req.session.loggedin=true;
+            req.session.loggedIn=true;
+            console.log(req.session);
     });
     //request handling when signup is requested
     app.post('/signup',bodyparserencoder,function(req,res){
@@ -33,8 +34,8 @@ module.exports=function(app){
     /////////////////////////////////////////////// session pages ////////////////////////////////////////  
     //request handling when logout is requested
     app.get('/logout',function(req,res){
-        //console.log(req.session.loggedin);
-        if(req.session.loggedin){
+        console.log(req.session);
+        if(req.session.loggedIn){
         console.log('logout requested');
         res.render('Addmie.ejs');}
         else{
@@ -42,9 +43,11 @@ module.exports=function(app){
         }
     });
     //request handling when user posts
-    app.post('/newpost',function(req,res){
+    app.post('/sendpost/:username',bodyparserencoder,function(req,res){
         console.log('post has been recived');
-        res.render('../../profile.php');
+        var query=require('../dbconnect/insertpost');
+        query(req);
+        res.redirect('/profile/'+req.params.username);
     });
     app.get('/profile/:username',function(req,res){
         console.log('get request to profile');

@@ -11,6 +11,7 @@
 </head>
 <body>
     <%- include('header.ejs')%>
+    <%var postlink="/sendpost/"+userobj.username; %>
     <div class="grid-container">
         <div class="grid-container-left">
             <div class="profile">
@@ -22,7 +23,7 @@
                 <div id="friends-container">
                     <ul>
                         <%for(i=0;i< userobj.friends.length;i++){%>
-                            <li>hi<%- include('friends.ejs',{friend:userobj.friends[i]})%></li>
+                            <li><%- include('friends.ejs',{friend:userobj.friends[i]})%></li>
                         <%}%>
                     </ul>
                 </div>                
@@ -30,14 +31,21 @@
         </div>
         <div class="grid-container-right">
             <div class="postform">
-        
-                <form  method="POST" action="nodejs/profile.php">
-                    <input type='text' name='text' value='Write Something Here' required/>
+                
+                
+                <form  method="POST" action=<%=postlink%> >
+                    <input type='text' name='text' value='Write Something Here'/>
                     <input id='post' type='submit' name='post' value='Post'/>
                 </form>
             </div>
             <div class="post-container">
                 <h1>your posts</h1>
+                <ul>
+                    <%for(i=0;i< postobj.length;i++){%>
+                        <li><%-include('mypostcontainer.js',{postobj:postobj[i]});%></li>
+                    <%}%>
+                </ul>
+                
             </div>
         </div>
     </div>
