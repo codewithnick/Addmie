@@ -59,13 +59,13 @@ module.exports=function(app){
         
     });
     //request handling when user posts
-    app.post('/sendpost/:username',bodyparserencoder,loginauth,function(req,res){
+    app.post('/:username/sendpost',bodyparserencoder,loginauth,function(req,res){
         console.log('post has been recived');
         var query=require('../dbconnect/insertpost');
         query(req,client);
-        res.redirect('/profile/'+req.params.username);
+        res.redirect('/'+req.params.username+'/profile');
     });
-    app.get('/profile/:username',loginauth,function(req,res){
+    app.get('/:username/profile',loginauth,function(req,res){
         console.log('get request to profile');
         var userobj={
             username:req.params.username,
@@ -76,6 +76,22 @@ module.exports=function(app){
         console.log('profile loaded');
 
     });
+    //////////////////////////////explore section/////////////////////////
+    app.get('/:username/explore/friends',loginauth,function(req,res){
+       res.render('profile.ejs');
+    });
+    app.get('/:username/explore/posts',loginauth,function(req,res){
+        res.render('profile.ejs');
+     });
+     /////////////////////////////// messages ////////////////////////////////
+     app.get('/:username/messages',loginauth,function(req,res){
+        res.render('profile.ejs');
+     });
+    ///////////////////////////////////// settings ///////////////////////////
+    app.get('/:username/explore/friends',loginauth,function(req,res){
+        res.render('profile.ejs');
+     });
+      
     console.log('closing connection to db');
     client.close();
 }

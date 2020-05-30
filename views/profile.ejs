@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" type = "image/png" href = "../addmie/img/Addmie.png"> 
     <link rel="Stylesheet" href="../addmie/css/styles.css">
-    <link >
+    <link rel="stylesheet" type="text/css" href="../addmie/css/gaurav.css">
     <script src="../addmie/js/loadprofile.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <%- include('header.ejs')%>
-    <%var postlink="/sendpost/"+userobj.username; %>
+    <%- include('header.ejs',({username:userobj.username}))%>
+    <%var postlink="/"+userobj.username+"/sendpost"; %>
     <div class="grid-container">
         <div class="grid-container-left">
             <div class="profile">
@@ -42,7 +43,7 @@
                 <h1>your posts</h1>
                 <ul>
                     <%for(i=0;i< postobj.length;i++){%>
-                        <li><%-include('mypostcontainer.js',{postobj:postobj[i]});%></li>
+                        <li><%-include('mypostcontainer.ejs',{postobj:postobj[i]});%></li>
                     <%}%>
                 </ul>
                 

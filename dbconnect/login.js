@@ -30,7 +30,7 @@ module.exports.login=async function main(userobj,res,req,client){
         console.log(exists);
         req.session.username=result.username;
         console.log('loggin in account of'+result.username);
-        res.redirect('/profile/'+result.username);
+        res.redirect('/'+result.username+'/profile');
         
     }
     else{
