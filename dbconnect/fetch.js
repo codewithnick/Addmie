@@ -19,7 +19,7 @@ module.exports = async function dbconnect(from,res,client)
     } finally {
         console.log('closing client connection');
         //await client.close();
-        console.log(posts);
+        //console.log(posts);
         await res.render('profile.ejs',{userobj:result,postobj:posts});
     }
 

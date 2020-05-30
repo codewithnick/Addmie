@@ -7,7 +7,7 @@ var port=process.env.port || 4000;
 //to check db connection disabled for now due to interruptions
 /* var connectdb=require(path.join(__dirname+'../../..'+'/dbconnect/connect.js'));
 connectdb(); */
-var controler=require('../../controllers/controler');
+var controler=require('./controllers/controler');
 console .log('server started');
 var app = express();
 app.use(cookieParser());
@@ -26,7 +26,7 @@ controler(app);
 //set the view engine as ejs
 app.set('view engine','ejs');
 //adding css and images using static path in express
-app.use(express.static(path.join(__dirname,'../../')));
+app.use(express.static(path.join(__dirname)));
 //request handling when root dir is requested
 //listening at port
 console.log('listening at port '+port) ;

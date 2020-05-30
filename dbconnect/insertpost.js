@@ -7,7 +7,7 @@ module.exports = async function dbconnect(req,client)
         let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         let yyyy = today.getFullYear()    
         var postobj={
-            username:req.params.username,
+            username:req.session.username,
             caption:req.body.text,
             likes:0,
             creationdate:dd+'/'+mm+'/'+yyyy,

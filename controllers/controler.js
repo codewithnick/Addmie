@@ -27,43 +27,18 @@ module.exports=function(app){
             console.log('login requested');
             let query=require('../'+'dbconnect/'+'login.js');
             let exists=query.login({username:req.body.User,password:req.body.Pass},res,req,client);
-            //console.log('everything done, exists= ' + exists);
             req.session.loggedIn=true;
-            //console.log(req.session);
+            req.session.username=req.body.User;
     });
     //request handling when signup is requested
     app.post('/signup',bodyparserencoder,function(req,res){
         console.log('signup requested');
         //if validated sucessfully then fire insert query in database
         let query=require('../'+'dbconnect/'+'newsignin.js');
-        //console.log(req.body);
         query(req.body.Username,req.body.Password,req.body.Fname,req.body.Lname,req.body.DOB,req.body.Email,client);
-        //window.alert('signed up successfully ,now you can login');
-        //now logging in
         query=require('../'+'dbconnect/'+'login.js');
-        exists=query.login({username:req.body.Username,password:req.body.Password},res,req);
-        
+        exists=query.login({username:req.body.Username,password:req.body.Password},res,req);       
         //move to profile page directly
-    });
-    /////////////////////////////////////////////// session pages ////////////////////////////////////////  
-    //request handling when logout is requested
-    app.get('/logout',function(req,res){
-        //console.log(req.session);
-        if(req.session.loggedIn){
-        req.session.destroy();       
-        }
-        else{
-            //console.log('login to continue');
-        }
-        res.redirect('/');
-        
-    });
-    //request handling when user posts
-    app.post('/:username/sendpost',bodyparserencoder,loginauth,function(req,res){
-        console.log('post has been recived');
-        var query=require('../dbconnect/insertpost');
-        query(req,client);
-        res.redirect('/'+req.params.username+'/profile');
     });
     app.get('/:username/profile',loginauth,function(req,res){
         console.log('get request to profile');
@@ -76,12 +51,39 @@ module.exports=function(app){
         console.log('profile loaded');
 
     });
+    /////////////////////////////////////////////// session pages ////////////////////////////////////////  
+    //request handling when logout is requested
+    app.get('/logout',function(req,res){
+        //console.log(req.session);
+        if(req.session.loggedIn){
+        req.session.destroy();       
+        }
+        else{
+            console.log('login to continue');
+        }
+        res.redirect('/');
+        
+    });
+    //request handling when user posts
+    app.post('/:username/sendpost',bodyparserencoder,loginauth,function(req,res){
+        console.log('post has been recived');
+        var query=require('../dbconnect/insertpost');
+        query(req,client);
+        res.redirect('/'+req.session.username+'/profile');
+    });
+    
     //////////////////////////////explore section/////////////////////////
     app.get('/:username/explore/friends',loginauth,function(req,res){
-       res.render('profile.ejs');
+        console.log('loading some friends to be added');
+        let query =require('../dbconnect/findfriends.js');
+        query(req.session.username,res,client);
+       console.log('found friends');
     });
     app.get('/:username/explore/posts',loginauth,function(req,res){
-        res.render('profile.ejs');
+        console.log('finding some posts to be liked');
+        let query =require('../dbconnect/findposts.js');
+        query(req.session.username,res,client);
+       console.log('found posts');
      });
      /////////////////////////////// messages ////////////////////////////////
      app.get('/:username/messages',loginauth,function(req,res){
