@@ -12,11 +12,12 @@
     <%-include('header.ejs',{username:username})%>
     <%-include('explore.ejs',{username:username})%>
     <!-- some for loop to show random users -->
-    
+    <div class="post-container">
         <ul>
             <%for(i=0;i< postobj.length;i++){%>
                 <li><%-include('postcontainer.ejs',{postobj:postobj[i]})%></li>
             <%}%>
         </ul>
+    </div>
 </body>
 </html>

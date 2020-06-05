@@ -18,7 +18,7 @@ module.exports=async function main(username,password,fname,lname,dob,email,clien
         email:email,
         creationdate:dd+'/'+mm+'/'+yyyy,
         active:0,
-        friends: ['m416','akm']
+        friends: []
     };
         try {
         // Connect to the MongoDB cluster

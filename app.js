@@ -27,6 +27,7 @@ controler(app);
 app.set('view engine','ejs');
 //adding css and images using static path in express
 app.use(express.static(path.join(__dirname)));
+app.use('/:username',express.static(path.join(__dirname)));
 //request handling when root dir is requested
 //listening at port
 console.log('listening at port '+port) ;

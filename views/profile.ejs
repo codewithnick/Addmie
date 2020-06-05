@@ -6,8 +6,8 @@
     <link rel = "icon" type = "image/png" href = "../addmie/img/Addmie.png"> 
     <link rel="Stylesheet" href="../addmie/css/styles.css">
     <link rel="stylesheet" type="text/css" href="../addmie/css/gaurav.css">
-    <script src="../addmie/js/loadprofile.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../addmie/js/client.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -16,15 +16,15 @@
     <div class="grid-container">
         <div class="grid-container-left">
             <div class="profile">
-                <div id="profile_picture">this feature is not yet available</div>
-                <div id="username"><%=userobj.username%></div>
+                <div id="profile_picture"><img src="../addmie/img/Addmie.png" alt="image" height="155px" width="155px" style="margin: 5px;"></div>
+                <div id="username"><a href=><%=userobj.username%></a></div>
             </div>
-            <div class="container">
+            <div class="container" id="friends">
                 <h1>friends</h1>
-                <div id="friends-container">
+                <div class="friends-container">
                     <ul>
                         <%for(i=0;i< userobj.friends.length;i++){%>
-                            <li><%- include('friends.ejs',{friend:userobj.friends[i]})%></li>
+                            <li><%- include('accountheader.ejs',{friend:userobj.friends[i]})%></li>
                         <%}%>
                     </ul>
                 </div>                

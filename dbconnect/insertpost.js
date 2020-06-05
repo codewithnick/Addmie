@@ -10,7 +10,7 @@ module.exports = async function dbconnect(req,client)
             username:req.session.username,
             caption:req.body.text,
             likes:0,
-            creationdate:dd+'/'+mm+'/'+yyyy,
+            creationdate:mm+'/'+dd+'/'+yyyy,
             blob:null
         };
        try {

@@ -1,12 +1,18 @@
-<div class='my-posts-container containerss '>
-    <div>
-         <%-include('friends.ejs',{friend:postobj.username});%> 
+<div class='my-posts-container'>
+    <div class="my-posts-container-header">
+         <%-include('accountheader.ejs',{friend:postobj.username});%> 
     </div>
-    <div> 
+    <div class="image">
+        <img src="../addmie/img/Addmie.png" alt="image" height="400px" width="auto" style="margin: 5px;">
+    </div>
+   
+    <span>
+        <div class="likes">likes:<%=postobj.likes%></div>
+        <div class="date">posted on:<%=postobj.creationdate%></div>
+    </span>
+    <hr>
+    <div class="caption"> 
         <%=postobj.caption%> 
     </div>
-    <span>
-        <div>likes:<%=postobj.likes%></div>
-        <div>posted on:<%=postobj.creationdate%></div>
-    </span>
+    
 </div>

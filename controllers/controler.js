@@ -53,7 +53,7 @@ module.exports=function(app){
     });
     /////////////////////////////////////////////// session pages ////////////////////////////////////////  
     //request handling when logout is requested
-    app.get('/logout',function(req,res){
+    app.get('/logout',loginauth,function(req,res){
         //console.log(req.session);
         if(req.session.loggedIn){
         req.session.destroy();       
@@ -93,7 +93,15 @@ module.exports=function(app){
     app.get('/:username/explore/friends',loginauth,function(req,res){
         res.render('profile.ejs');
      });
-      
+     ////////////////////////////////////////// background authenticated ajax requests ///////////////////////
+     app.get('/ajax/addfriend',loginauth,function(req,res){
+        console.log(req.query)
+        console.log(req.url)
+        let query=require('../dbconnect/addfriend.js');
+        query(req.session.username,req.query.text,client)
+     });
+    
     console.log('closing connection to db');
     client.close();
+
 }
