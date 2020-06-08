@@ -1,0 +1,29 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <a href=\"https://nodejs.org/\">\r     <img\r       alt=\"Node.js\"\r       src=\"https://nodejs.org/static/images/logo-light.svg\"\r       width=\"400\"\r     />\r   </a>\r </p>",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.5.7",
+    "nodemon": "^2.0.4",
+    "npm": "^6.14.4" 
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codewithnick/facebook-by-nick--v-2.git"
+  },
+  "author": "nick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codewithnick/facebook-by-nick--v-2/issues"
+  },
+  "homepage": "https://github.com/codewithnick/facebook-by-nick--v-2#readme"
+}
