@@ -1,10 +1,10 @@
 
-<%var link = '/'+friend+'/profile'; %>
+<%var link = '/profile'+'/'+friend; %>
 <span>
     <div style="width: 100px;">
         <a href= <%=link%>>
             <%=friend%>
         </a>
     </div>
-    <button onclick="addfriend('<%=friend%>')" name=<%=friend%> > connect </button>
+    <button class="connectbutton" onclick="addfriend('<%=friend%>')" name=<%=friend%>  > connect </button>
 </span>

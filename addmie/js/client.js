@@ -1,6 +1,5 @@
 $(document).ready(
-    
-);
+)
 function addfriend(friendname){
     $.ajax({
         url:'/ajax/addfriend',

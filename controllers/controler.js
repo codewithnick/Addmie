@@ -16,6 +16,7 @@ const loginauth=(req,res,next)=>{
             console.log('looks like youve been logged out of the session login to continue');
         }
 };
+
 bodyparserencoder = bodyparserencoder.urlencoded({ extended: false })
 module.exports=function(app){
     app.get('/',function(req,res){
@@ -40,16 +41,36 @@ module.exports=function(app){
         exists=query.login({username:req.body.Username,password:req.body.Password},res,req);       
         //move to profile page directly
     });
+    //////////own account login///////////
     app.get('/:username/profile',loginauth,function(req,res){
+        if(req.params.username==req.session.username){
+            console.log('get request to profile');
+            var userobj={
+                username:req.params.username,
+            };
+            let fetch=require('../dbconnect/fetch.js');
+            const fname=null;
+            fetch(req.params.username,res,client);
+            console.log('profile loaded');
+        }
+        else{
+            console.log('restricted')
+            res.redirect('/'+req.session.username+'/profile')
+        }
+    });
+    ////////to view others account///////////
+    app.get('/profile/:username',loginauth,function(req,res){
+        
         console.log('get request to profile');
         var userobj={
             username:req.params.username,
         };
-        let fetch=require('../dbconnect/fetch.js');
+        let fetch=require('../dbconnect/loadprofile.js');
         const fname=null;
         fetch(req.params.username,res,client);
         console.log('profile loaded');
-
+    
+        
     });
     /////////////////////////////////////////////// session pages ////////////////////////////////////////  
     //request handling when logout is requested
@@ -71,7 +92,10 @@ module.exports=function(app){
         query(req,client);
         res.redirect('/'+req.session.username+'/profile');
     });
-    
+    app.get('/:username/home',loginauth,function(req,res){
+        console.log('request for home feed');
+        res.send('<h1>this feature is yet to be updated</h1>')
+    });
     //////////////////////////////explore section/////////////////////////
     app.get('/:username/explore/friends',loginauth,function(req,res){
         console.log('loading some friends to be added');
@@ -87,11 +111,11 @@ module.exports=function(app){
      });
      /////////////////////////////// messages ////////////////////////////////
      app.get('/:username/messages',loginauth,function(req,res){
-        res.render('profile.ejs');
+        res.send('<h1>this feature is yet to be updated</h1>');
      });
     ///////////////////////////////////// settings ///////////////////////////
-    app.get('/:username/explore/friends',loginauth,function(req,res){
-        res.render('profile.ejs');
+    app.get('/:username/settings',loginauth,function(req,res){
+        res.send('<h1>this feature is yet to be updated</h1>');
      });
      ////////////////////////////////////////// background authenticated ajax requests ///////////////////////
      app.get('/ajax/addfriend',loginauth,function(req,res){

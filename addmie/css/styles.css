@@ -50,6 +50,15 @@ body,html{
 button::onclick{
     border: none;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
 .headermenu{
     background-color: #00b9ed;
     height: 48px;
@@ -249,6 +258,9 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
 .my-posts-container span div{
     padding: 3px;
 }
+.post-image{
+    overflow: hidden;
+}
 .friends-container a{
     color: black;
     text-decoration: none; 
@@ -259,8 +271,20 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
     text-align: left;
     margin: 5px;
     padding: 2px;
-    
+    overflow-y: scroll;
 }
 .friends-container span{
     display: flex;
+}
+.friends-container ul li{
+    margin-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+.connectbutton{
+    background-color: rgba(69, 129, 241, 0.3);
+    border: 1px solid rgba(69, 129, 241, 0.5);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px;
+    border-radius: 7%;
 }
