@@ -16,11 +16,22 @@ const loginauth=(req,res,next)=>{
             console.log('looks like youve been logged out of the session login to continue');
         }
 };
+const restrictionauth=(req,res,next)=>{
+    if(req.session.username === req.params.username){
+        next();
+        }
+    else{
+            console.log(req.session.username)
+            console.log(req.params.username)
+            res.redirect('/'+req.session.username+'/profile');
+            console.log('this page is restricted');
+        }
+};
 
-bodyparserencoder = bodyparserencoder.urlencoded({ extended: false })
+bodyparserencoder = bodyparserencoder.urlencoded({ extended: true })
 module.exports=function(app){
     app.get('/',function(req,res){
-        req.session.loggedIn=true;
+        //req.session.loggedIn=true;
         res.render('Addmie.ejs');
     });
     //request handling when login is requested
@@ -42,7 +53,7 @@ module.exports=function(app){
         //move to profile page directly
     });
     //////////own account login///////////
-    app.get('/:username/profile',loginauth,function(req,res){
+    app.get('/:username/profile',loginauth,restrictionauth,function(req,res){
         if(req.params.username==req.session.username){
             console.log('get request to profile');
             var userobj={
@@ -86,45 +97,94 @@ module.exports=function(app){
         
     });
     //request handling when user posts
-    app.post('/:username/sendpost',bodyparserencoder,loginauth,function(req,res){
+    app.post('/:username/sendpost',bodyparserencoder,loginauth,restrictionauth,function(req,res){
         console.log('post has been recived');
         var query=require('../dbconnect/insertpost');
         query(req,client);
         res.redirect('/'+req.session.username+'/profile');
     });
-    app.get('/:username/home',loginauth,function(req,res){
+    app.get('/:username/home',loginauth,restrictionauth,function(req,res){
         console.log('request for home feed');
         res.send('<h1>this feature is yet to be updated</h1>')
     });
     //////////////////////////////explore section/////////////////////////
-    app.get('/:username/explore/friends',loginauth,function(req,res){
+    app.get('/:username/explore/friends',loginauth,restrictionauth,function(req,res){
         console.log('loading some friends to be added');
         let query =require('../dbconnect/findfriends.js');
         query(req.session.username,res,client);
        console.log('found friends');
     });
-    app.get('/:username/explore/posts',loginauth,function(req,res){
+    app.get('/:username/explore/posts',loginauth,restrictionauth,function(req,res){
         console.log('finding some posts to be liked');
         let query =require('../dbconnect/findposts.js');
         query(req.session.username,res,client);
        console.log('found posts');
      });
+
+
+
+
+     
      /////////////////////////////// messages ////////////////////////////////
-     app.get('/:username/messages',loginauth,function(req,res){
-        res.send('<h1>this feature is yet to be updated</h1>');
+     app.get('/:username/direct',loginauth,restrictionauth,function(req,res){
+        let query =require('../dbconnect/loadmessages.js');//correct this
+        query(req.session.username,res,client);
+        console.log('loading messages')
+        
      });
+
+
+
+
+
+     app.get('/:username/direct/inbox/:convoid',loginauth,restrictionauth,function(req,res){
+
+        let query =require('../dbconnect/loadmessagebox.js');//correct this
+        query(req.session.username,req.params.convoid,res,client);
+     });
+
+
+
+     app.get('/:username/direct/new/:friendname',loginauth,restrictionauth,function(req,res){
+        let query =require('../dbconnect/sendnewmessage.js');
+        query(req.session.username,req,res,client,req.params.friendname);
+        console.log('sending neww message from '+req.session.username+' to '+req.params.friendname);
+     });
+
+
+
+
     ///////////////////////////////////// settings ///////////////////////////
-    app.get('/:username/settings',loginauth,function(req,res){
+    app.get('/:username/settings',loginauth,restrictionauth,function(req,res){
         res.send('<h1>this feature is yet to be updated</h1>');
      });
-     ////////////////////////////////////////// background authenticated ajax requests ///////////////////////
+
+
+
+
+     ////////////////////////////////////////// background authenticated ajax requests //////////////////////
      app.get('/ajax/addfriend',loginauth,function(req,res){
-        console.log(req.query)
-        console.log(req.url)
+        //console.log(req.query)
+        //console.log(req.url)
         let query=require('../dbconnect/addfriend.js');
-        query(req.session.username,req.query.text,client)
+        query(req.session.username,req.query.text,client);
+        res.end('success');
      });
-    
+     app.post('/ajax/newmessage',bodyparserencoder,loginauth,function(req,res){
+        //console.log(req)
+        //console.log(req.body);    
+        let query=require('../dbconnect/createnewconvo.js');
+        query(req.body,res,client);
+        console.log('new message id created')
+     });
+     app.post('/ajax/appendmessage',bodyparserencoder,loginauth,function(req,res){
+        let query=require('../dbconnect/appendmessage.js');
+        query(req.body,req.session.username,res,client);
+        //console.log(req.body.convoid)
+        console.log('trying to send new message')
+     });
+
+
     console.log('closing connection to db');
     client.close();
 

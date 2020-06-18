@@ -8,8 +8,8 @@ module.exports=async function main(from,to,client){
         }
         result.friends=friends;
         result=await client.db('profile').collection('user').replaceOne({username:from},result);
-        result=await client.db('profile').collection('user').findOne({username:from});
-        console.log(result)
+        //result=await client.db('profile').collection('user').findOne({username:from});
+        //console.log(result)
     } catch (e) {
         console.log('error connecting to db');
         console.error(e);

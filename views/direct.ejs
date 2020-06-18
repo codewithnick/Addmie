@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="addmie/css/message.css">
+    <title>DM</title>
+</head>
+<body>
+    <div class="chatcontainer">
+        <div class="row">
+            <div class="container">
+                <div class="left-section container-fluid border" id='inbox'>
+                    <h2 class="text-center border">direct</h2>
+
+                        <div >
+                            <ul>
+                                <% for(i=0;i< convobj.length;i++){%>
+                                    <% var friend='error';
+                                    if(convobj[i].participants[0].name==username){
+                                        friend=convobj[i].participants[1].name;
+                                    }
+                                    else{friend=convobj[i].participants[0].name;}
+                                    %>
+                                    <li><%-include('convoheader.ejs',{friend:friend,convoid:convobj[i]._id})%></li>
+                                    
+                                <% } %>
+                            </ul>
+                        </div>
+                </div>
+                <!-- <div class="right-section border container-fluid" id='messagebox'>
+                    <%-include('messagebox.ejs',{friend:'testuser',username:'nick'})%>
+                </div>   -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
