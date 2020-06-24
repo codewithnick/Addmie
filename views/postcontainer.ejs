@@ -7,8 +7,7 @@
     </div>
    
     <span>
-        <div class="likes">likes:<%=postobj.likes%></div>
-        <div class="date">posted on:<%=postobj.creationdate%></div>
+        <%-include('likecommentsharesave.ejs',{postid:postobj._id  })%>
     </span>
     <hr>
     <div class="caption"> 

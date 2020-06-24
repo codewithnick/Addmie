@@ -1,0 +1,22 @@
+<form id='btnform'>
+    <%
+        var likeid='like'+postid,
+        commentid='comment'+postid,
+        shareid='share'+postid,
+        saveid='save'+postid; 
+    %>
+<!--      <img src="../addmie/img/">  -->
+    <button type="button" class="like btn" onclick="like('<%=postid%>')" >       
+        <i id='<%=likeid%>' class="far fa-heart" ></i>
+    </button>
+    <button type="button"   class="comment btn" onclick="comment('<%=postid%>')">
+        <i id='<%=commentid%>' class="far fa-comment-dots"></i>
+    </button>
+    <button type="button"   class="share btn" onclick="share('<%=postid%>')">
+        <i id='<%=shareid%>' class="far fa-paper-plane"></i>
+    </button>
+    <button type="button"   class="save btn" onclick="save('<%=postid%>')">
+        <i id='<%=saveid%>' class="far fa-star"></i>
+    </button>
+ 
+</form>
