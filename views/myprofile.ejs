@@ -23,7 +23,7 @@
                 <div class="friends-container">
                     <ul>
                         <%for(i=0;i< userobj.friends.length;i++){%>
-                            <li><%- include('accountheader.ejs',{friend:userobj.friends[i]})%></li>
+                            <li><%- include('accountheader.ejs',{friend:userobj.friends[i],username:userobj.username})%></li>
                         <%}%>
                     </ul>
                 </div>                

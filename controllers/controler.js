@@ -156,7 +156,8 @@ module.exports=function(app){
 
     ///////////////////////////////////// settings ///////////////////////////
     app.get('/:username/settings',loginauth,restrictionauth,function(req,res){
-        res.send('<h1>this feature is yet to be updated</h1>');
+        let query=require('../dbconnect/settings');
+        query(req,res);
      });
 
 

@@ -7,5 +7,5 @@ module.exports=async function main(username,req,res,client,friendname){
         console.error(e);
         res.redirect('/'+username+'/profile');
     } 
-    res.render('newmessagebox.ejs');
+    res.render('newmessagebox.ejs',{friend:friendname,username:username});
 }

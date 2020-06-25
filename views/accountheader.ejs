@@ -1,10 +1,22 @@
 
 <%var link = '/profile'+'/'+friend; %>
+<%var chat = '/' + username+'/direct/new/'+friend; %>
 <span>
     <div style="width: 100px;">
         <a href= <%=link%>>
             <%=friend%>
+
         </a>
     </div>
-
+    <div>
+        <a href="<%=chat%>">
+            <i class="fas fa-user-secret"></i>
+        </a>
+    </div>
+    <div>
+        <a href="<%=chat%>">
+            <i class="fas fa-plus"></i> chat
+        </a>
+    </div>
+    
 </span>

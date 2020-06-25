@@ -6,7 +6,7 @@ module.exports=async function main(username,res,client){
     try {
         result =await client.db('profile').collection('user').find({}).toArray();
         friends =await client.db('profile').collection('user').findOne({username:username});        
-        console.log(friends)
+        //console.log(result)
         friends=friends.friends;
     } catch (e) {
         console.log('error connecting to db');
@@ -23,9 +23,12 @@ module.exports=async function main(username,res,client){
         //remove friends from list
         for (let i = 0; i < result.length; i++) {
             const element = result[i];
+            console.log(element.username,friends)
             if(friends.includes(element.username)){               
                 result.splice(i,1);
+                i-=1
             }
+            
         }
         //await client.close();       
         res.render('explorefriends.ejs',{userobj:result,username:username});

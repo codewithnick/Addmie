@@ -24,13 +24,13 @@
                 <div class="friends-container">
                     <ul>
                         <%for(i=0;i< userobj.friends.length;i++){%>
-                            <li><%- include('accountheader.ejs',{friend:userobj.friends[i]})%></li>
+                            <li><%- include('accountheader.ejs',{friend:userobj.friends[i],username:'hi'})%></li>
                         <%}%>
                     </ul>
                 </div>                
             </div>
         </div>
-        <div class="grid-container-right">
+        <div class="grid-container-right" >
             <!-- <div class="postform">
                 
                 
@@ -39,7 +39,7 @@
                     <input id='post' type='submit' name='post' value='Post'/>
                 </form>
             </div> -->
-            <div class="post-container">
+            <div class="post-container" style="height: 100%;">
                 <h1>your posts</h1>
                 <ul>
                     <%for(i=0;i< postobj.length;i++){%>
