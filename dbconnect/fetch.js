@@ -9,7 +9,7 @@ module.exports = async function dbconnect(from,res,client)
         console.log('client connected sucessfully');
         // Make the appropriate DB calls
         result=await client.db('profile').collection('user').findOne({username:from});
-        posts=await client.db('profile').collection('post').find({username:from}).toArray();
+        posts=await client.db('profile').collection('post').find({username:from}).sort('creationdate',-1).toArray();
         //console.log(result);
         //console.log(posts);
     } catch (e) {

@@ -147,6 +147,7 @@ module.exports=function(app){
 
      app.get('/:username/direct/new/:friendname',loginauth,restrictionauth,function(req,res){
         let query =require('../dbconnect/sendnewmessage.js');
+        //console.log(req.query.secret)
         query(req.session.username,req,res,client,req.params.friendname);
         console.log('sending neww message from '+req.session.username+' to '+req.params.friendname);
      });

@@ -17,7 +17,8 @@ module.exports = async function dbconnect(obj,username,res,client)
        try {       
         result=await client.db('profile').collection('message').updateOne({_id:mongodb.ObjectId(obj.convoid)},
                                                                {$push:{messages:messageobj}});
-                                                                await new Promise(r => setTimeout(r, 1500));
+        result=await client.db('profile').collection('message').updateOne({_id:mongodb.ObjectId(obj.convoid)},
+                                                               {$set:{lastmessage:datetoday+' '+timenow}});
         
         
         //console.log(obj.convoid);

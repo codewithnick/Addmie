@@ -8,9 +8,14 @@ module.exports = async function dbconnect(obj,res,client)
 {   
     var x=require('mongodb').ObjectId();
     console.log(x);
+    var viewers=[];
+    if(obj.secret==null){
+        viewers.push(obj.from)
+    }
+    viewers.push(obj.to)
     var senderobj={
         name:obj.from,
-        reveal:true, 
+        reveal:obj.secret, 
         admin:true
     }
     var reciverobj={
@@ -31,6 +36,8 @@ module.exports = async function dbconnect(obj,res,client)
             title: null,
             admin:null,
             createdate:datetoday,
+            viewers:viewers,
+            lastmessage:datetoday+' '+timenow,
             participants:[senderobj,reciverobj],
             messages:[messageobj]
     }

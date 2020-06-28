@@ -19,11 +19,11 @@ function appendmessage(message){
     mymessage.appendChild(newmessage);
     messagecontainer.appendChild(mymessage);
 }
-function sendmessage(username,friend){
+function sendmessage(username,friend,secret){
     var message=getmessagefrominput();
     //console.log('{from:'+username+',to:'+friend+',message:'+message+'}')
     if(message!=null && message!=''){        
-        var jqxhr =$.post( "/ajax/newmessage", { from:username,to:friend,message:message } , (object)=>{
+        var jqxhr =$.post( "/ajax/newmessage", { from:username,to:friend,message:message,secret:secret } , (object)=>{
             //call back function
             appendmessage(message);
             window.location.replace('/'+username+'/direct/inbox/'+object.convoid);

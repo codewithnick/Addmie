@@ -1,6 +1,7 @@
 module.exports=async function main(username,res,client){
     try {
-        result=await client.db('profile').collection('message').find({'participants':{$elemMatch:{name:username} } } ).toArray();
+        result=await client.db('profile').collection('message').find({'participants':{$elemMatch:{name:username} } } )
+        .sort('lastmessage',-1).toArray();
         //finding all documents that includes participant as username
        //console.log(result)
     } catch (e) {
@@ -15,5 +16,5 @@ module.exports=async function main(username,res,client){
         }
     //console.log(result[1]._id)    
     }
-    res.render('direct.ejs',{convobj:result,username:username});
+    res.render('direct.ejs',{convobj:result,username:username,secret:null});
 }

@@ -1,6 +1,7 @@
 
 <%var link = '/profile'+'/'+friend; %>
 <%var chat = '/' + username+'/direct/new/'+friend; %>
+<%var anychat = '/' + username+'/direct/new/'+friend+'?secret=True'; %>
 <span>
     <div style="width: 100px;">
         <a href= <%=link%>>
@@ -9,7 +10,7 @@
         </a>
     </div>
     <div>
-        <a href="<%=chat%>">
+        <a href="<%=anychat%>">
             <i class="fas fa-user-secret"></i>
         </a>
     </div>
