@@ -9,7 +9,7 @@ module.exports = async function dbconnect(obj,res,client)
     var x=require('mongodb').ObjectId();
     console.log(x);
     var viewers=[];
-    if(obj.secret==null){
+    if(obj.secret=='null'){
         viewers.push(obj.from)
     }
     viewers.push(obj.to)

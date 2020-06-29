@@ -82,6 +82,7 @@ width: 100px;
     padding: 10px;
 }
 textarea{
+    background-color: transparent;
     text-align: left;
     height: 100%;
     border: none;
@@ -173,4 +174,10 @@ button{
     font-size: 24px;
     margin-left: 20px;
     width: 100%;
+}
+.secret{
+    background-image: url('../img/secret.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }

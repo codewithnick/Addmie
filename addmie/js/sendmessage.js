@@ -21,6 +21,7 @@ function appendmessage(message){
 }
 function sendmessage(username,friend,secret){
     var message=getmessagefrominput();
+    //console.log(secret)
     //console.log('{from:'+username+',to:'+friend+',message:'+message+'}')
     if(message!=null && message!=''){        
         var jqxhr =$.post( "/ajax/newmessage", { from:username,to:friend,message:message,secret:secret } , (object)=>{

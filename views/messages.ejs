@@ -1,23 +1,26 @@
 <h2 class="border"><%=result.title%></h2>
-<section id="messages">
-        <%for(i=0;i< result.messages.length;i++){
-            if(result.messages[i].sender==username){%>
-                <!--message is sent by me -->
-                <div><p class="sent"><%=result.messages[i].message%></p></div>
 
-            <%}
-            else{%>
-                <div><p class="recived"><%=result.messages[i].message%></p></div>
-            <%}
-        }%>
-</section>
-<div class="masssage-container">
+<div class='<%if(result.viewers.length==1){%>secret<%}%>'>
+    <section id="messages">
+            <%for(i=0;i< result.messages.length;i++){
+                if(result.messages[i].sender==username){%>
+                    <!--message is sent by me -->
+                    <div><p class="sent"><%=result.messages[i].message%></p></div>
 
-<div class="massage">
-    
-    <div class="form" >
-        <textarea  type="text" placeholder="message" name='message' id="message"></textarea>
-        <button type="submit" style="border: none; color: rgba(30, 70, 190, 0.7); padding: 2px;" 
-        name="sendmessage" placeholder="send" onclick="sendmessageagain('<%=username%>','<%result.title%>','<%=result._id%>')" >send</button>        
+                <%}
+                else{%>
+                    <div><p class="recived"><%=result.messages[i].message%></p></div>
+                <%}
+            }%>
+    </section>
+    <div class="masssage-container">
+        <div class="massage">
+            
+            <div class="form" >
+                <textarea  type="text" placeholder="message" name='message' id="message"></textarea>
+                <button type="submit" style="border: none; color: rgba(30, 70, 190, 0.7); padding: 2px;" 
+                name="sendmessage" placeholder="send" onclick="sendmessageagain('<%=username%>','<%result.title%>','<%=result._id%>')" >send</button>        
+            </div>
+        </div>  
     </div>
-</div>  
+</div>
