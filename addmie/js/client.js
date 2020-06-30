@@ -8,3 +8,9 @@ function addfriend(friendname){
     })
 
 }
+function liked(id){
+    
+    var jqxhr =$.post( "/ajax/like", { id:id} , (object)=>{
+        console.log(liked)            
+    });
+}

@@ -3,6 +3,7 @@ function like(id){
   element.classList.toggle('fas')
   element.classList.toggle('far')
   element.classList.toggle('red')
+  liked(id);
 }
 function comment(id){
   const element=document.getElementById('comment'+id);

@@ -9,7 +9,7 @@ module.exports = async function dbconnect(req,client)
         var postobj={
             username:req.session.username,
             caption:req.body.text,
-            likes:0,
+            likes:[],
             creationdate:mm+'/'+dd+'/'+yyyy,
             blob:null
         };

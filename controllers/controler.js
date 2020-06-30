@@ -185,7 +185,11 @@ module.exports=function(app){
         //console.log(req.body.convoid)
         console.log('trying to send new message')
      });
-     
+     app.post('/ajax/like',bodyparserencoder,loginauth,function(req,res){
+        let query=require('../dbconnect/like.js');
+        query(req,res,client);
+        
+     });
     console.log('closing connection to db');
     client.close();
 
