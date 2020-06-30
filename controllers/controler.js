@@ -185,8 +185,7 @@ module.exports=function(app){
         //console.log(req.body.convoid)
         console.log('trying to send new message')
      });
-
-
+     
     console.log('closing connection to db');
     client.close();
 

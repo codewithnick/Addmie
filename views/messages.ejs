@@ -1,6 +1,6 @@
 <h2 class="border"><%=result.title%></h2>
 
-<div class='<%if(result.viewers.length==1){%>secret<%}%>'>
+<div class='<%if(result.viewers.length==1){%>secret<%}%>'><!-- if viewers are only one,ie the sender -->
     <section id="messages">
             <%for(i=0;i< result.messages.length;i++){
                 if(result.messages[i].sender==username){%>

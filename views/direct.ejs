@@ -16,10 +16,16 @@
                             <ul>
                                 <% for(i=0;i< convobj.length;i++){%>
                                     <% var friend='error';
+                                    
                                     if(convobj[i].participants[0].name==username){
                                         friend=convobj[i].participants[1].name;
                                     }
-                                    else{friend=convobj[i].participants[0].name;}
+                                    else{friend=convobj[i].participants[0].name;
+                                    }
+                                    
+                                    if(convobj[i].viewers.length==1 && convobj[i].viewers.includes(username)){
+                                        friend='anonymous -secret message'
+                                    }
                                     %>
                                     <li><%-include('convoheader.ejs',{friend:friend,convoid:convobj[i]._id})%></li>
                                     

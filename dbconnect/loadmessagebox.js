@@ -19,6 +19,10 @@ module.exports=async function main(username,convoid,res,client){
             result.title=result.participants[1].name
         }
     }
-    //console.log(result)
+    //checking if username is a viewer of the conversation so ill remove title if he/she is not
+    if(result.viewers.length==1 && result.viewers[0]==username){
+        result.title='someone left a secret message'
+    }
+    //console.log(result,username)
     res.render('existingconvo.ejs',{result:result,username:username});
 }
