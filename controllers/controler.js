@@ -105,7 +105,8 @@ module.exports=function(app){
     });
     app.get('/:username/home',loginauth,restrictionauth,function(req,res){
         console.log('request for home feed');
-        res.send('<h1>this feature is yet to be updated</h1>')
+        let query =require('../dbconnect/homepage.js');
+        query(req.session.username,res,client);
     });
     //////////////////////////////explore section/////////////////////////
     app.get('/:username/explore/friends',loginauth,restrictionauth,function(req,res){

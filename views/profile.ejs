@@ -25,6 +25,7 @@
                     <ul>
                         <%for(i=0;i< userobj.friends.length;i++){%>
                             <li><%- include('accountheader.ejs',{friend:userobj.friends[i],username:'hi'})%></li>
+                            <!-- fix this -->
                         <%}%>
                     </ul>
                 </div>                
@@ -43,7 +44,7 @@
                 <h1>your posts</h1>
                 <ul>
                     <%for(i=0;i< postobj.length;i++){%>
-                        <li><%-include('mypostcontainer.ejs',{postobj:postobj[i]});%></li>
+                        <li><%-include('mypostcontainer.ejs',{postobj:postobj[i],username:userobj.username});%></li>
                     <%}%>
                 </ul>
                 

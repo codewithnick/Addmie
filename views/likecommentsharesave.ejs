@@ -9,11 +9,13 @@
         %>
     <!--      <img src="../addmie/img/">  -->
         <button type="button" class="like btn" onclick="like('<%=postid%>')" >       
-            <i id='<%=likeid%>' class="far fa-heart" ></i>
+            <i id='<%=likeid%>' class="<%if(likes.includes(username)){%> fas fa-heart<%}else{%> far fa-heart<%}%>  " ></i>
+            <div class="likes">likes:<%=likes.length%></div>
         </button>
         <button type="button"   class="comment btn" onclick="comment('<%=postid%>')">
             <i id='<%=commentid%>' class="far fa-comment-dots"></i>
         </button>
+
         <button type="button"   class="share btn" onclick="share('<%=postid%>')">
             <i id='<%=shareid%>' class="far fa-paper-plane"></i>
         </button>

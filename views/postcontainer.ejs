@@ -7,7 +7,7 @@
     </div>
    
     <span>
-        <%-include('likecommentsharesave.ejs',{postid:postobj._id  })%>
+        <%-include('likecommentsharesave.ejs',{postid:postobj._id,username:username,likes:postobj.likes})%>
     </span>
     <hr>
     <div class="caption"> 

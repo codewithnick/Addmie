@@ -15,7 +15,7 @@
     <div class="post-container">
         <ul>
             <%for(i=0;i< postobj.length;i++){%>
-                <li><%-include('postcontainer.ejs',{postobj:postobj[i]})%></li>
+                <li><%-include('postcontainer.ejs',{postobj:postobj[i],username:username})%></li>
             <%}%>
         </ul>
     </div>
