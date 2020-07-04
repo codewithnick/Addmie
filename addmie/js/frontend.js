@@ -1,9 +1,9 @@
 function like(id){
-  const element=document.getElementById('like'+id);
+  var element=document.getElementById('like'+id);
   element.classList.toggle('fas')
   element.classList.toggle('far')
   element.classList.toggle('red')
-
+  element=document.getElementById('like'+id+'value')
   liked(id);
 }
 function comment(id){
@@ -20,3 +20,18 @@ function save(id){
   element.classList.toggle('far')
   element.classList.toggle('gold')
 }
+function dot(id)
+{
+  hide('menu'+id);
+  
+}
+function hide(id){
+  var popup = document.getElementById(id);
+  popup.classList.toggle("hide");
+}
+//window events
+/* window.onclick = function(event) {
+  var b=document.getElementsByClassName('menu')
+  b.style.display = "none";
+   
+  } */

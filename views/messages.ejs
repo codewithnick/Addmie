@@ -1,4 +1,21 @@
-<h2 class="border"><%=result.title%></h2>
+
+<div style="display: flex;">
+    <a  onclick="history.back()">
+        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-square-fill" fill="#00b9ed">
+            <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.354 10.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L6.207 7.5H11a.5.5 0 0 1 0 1H6.207l2.147 2.146z"/>
+        </svg>
+    </a>
+    <h2 class="text-center" style="display: flex;align-items: center;justify-content: center;width: 100%;"><%=result.title%></h2>
+    <div onclick="">
+        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+          </svg>
+    </div>  
+</div>
+
+
+
+
 
 <div class='<%if(result.viewers.length==1){%>secret<%}%>'><!-- if viewers are only one,ie the sender -->
     <section id="messages">
@@ -13,9 +30,11 @@
                 <%}
             }%>
     </section>
+
+
+
     <div class="masssage-container">
         <div class="massage">
-            
             <div class="form" >
                 <textarea  type="text" placeholder="message" name='message' id="message"></textarea>
                 <button type="submit" style="border: none; color: rgba(30, 70, 190, 0.7); padding: 2px;" 

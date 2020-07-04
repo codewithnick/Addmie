@@ -5,12 +5,19 @@
             var likeid='like'+postid,
             commentid='comment'+postid,
             shareid='share'+postid,
-            saveid='save'+postid; 
+            saveid='save'+postid, 
+            likeidvalue='like'+postid+'value',
+            commentidvalue='comment'+postid+'value',
+            shareidvalue='share'+postid+'value',
+            saveidvalue='save'+postid+'value'; 
         %>
     <!--      <img src="../addmie/img/">  -->
         <button type="button" class="like btn" onclick="like('<%=postid%>')" >       
             <i id='<%=likeid%>' class="<%if(likes.includes(username)){%> fas fa-heart<%}else{%> far fa-heart<%}%>  " ></i>
-            <div class="likes">likes:<%=likes.length%></div>
+            <div class="likes">
+                <div>likes:</div>
+                <div id="<%=likeidvalue%>"><%=likes.length%></div>
+            </div>
         </button>
         <button type="button"   class="comment btn" onclick="comment('<%=postid%>')">
             <i id='<%=commentid%>' class="far fa-comment-dots"></i>

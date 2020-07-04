@@ -135,9 +135,7 @@ module.exports=function(app){
      });
 
 
-
-
-
+     
      app.get('/:username/direct/inbox/:convoid',loginauth,restrictionauth,function(req,res){
 
         let query =require('../dbconnect/loadmessagebox.js');//correct this

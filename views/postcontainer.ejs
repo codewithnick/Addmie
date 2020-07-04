@@ -1,6 +1,15 @@
 <div class='my-posts-container'>
+    <%var menuid='menu'+postobj._id%>
     <div class="my-posts-container-header">
-         <%-include('postheader.ejs',{friend:postobj.username});%> 
+         <%-include('postheader.ejs',{friend:postobj.username,postid:postobj._id});%> 
+    </div>
+    <div class="menu hide" id="<%=menuid%>" >
+        <ul >
+            <li><a href="#">report</a></li>
+            <li><a href="#">visit page</a></li>
+            <li><a href="#">copy link</a></li>
+            <li><a href="#">block</a></li>
+        </ul>
     </div>
     <div class="post-image">
         <img src="../addmie/img/Addmie.png" alt="image" height="400px" width="auto" style="margin: 5px;">
