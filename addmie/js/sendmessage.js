@@ -41,3 +41,18 @@ function sendmessageagain(username,friend,result){
         });
     }  
 }
+
+function deleteconversation(id){
+    hide('menu'+id)
+}
+function blockuser(id){
+    hide('menu'+id)
+}
+function muteuser(id){
+    hide('menu'+id)
+}
+function hide(id){
+    var popup = document.getElementById(id);
+    popup.classList.toggle("hide");
+    //console.log('hiding')
+  }

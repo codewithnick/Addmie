@@ -182,3 +182,35 @@ button{
     background-repeat: no-repeat;
     background-position: center;
 }
+.hide{
+    display: none;
+}
+.convomenu{
+    z-index: 1;
+    position:absolute;
+    margin-left: 200px;
+    margin-top: 100px;
+    height: fit-content;
+    width: fit-content;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(128, 128, 128, 0.363) 3px 3px;
+}
+.convomenu li button{
+    font-size: 32px;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    color: rgb(110, 110, 110);
+    background-color: transparent;
+    text-align: center;
+}
+.convomenu ul{
+    padding: 5px;
+}
+.convomenu li{
+    padding: 2px;
+    width: 100%;
+    border-bottom: 1px solid darkgray;
+    text-align: center;
+}

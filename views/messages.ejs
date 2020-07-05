@@ -1,4 +1,4 @@
-
+<%var menuid='menu'+result._id%>
 <div style="display: flex;">
     <a  onclick="history.back()">
         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-square-fill" fill="#00b9ed">
@@ -6,7 +6,7 @@
         </svg>
     </a>
     <h2 class="text-center" style="display: flex;align-items: center;justify-content: center;width: 100%;"><%=result.title%></h2>
-    <div onclick="">
+    <div onclick="hide('<%=menuid%>')">
         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
           </svg>
@@ -30,7 +30,14 @@
                 <%}
             }%>
     </section>
-
+    
+    <div class="convomenu hide"   id='<%=menuid%>'>
+        <ul >
+            <li><button onclick="deleteconversation('<%=result._id%>')"  >delete</button></li>
+            <li><button onclick="blockuser('<%=result._id%>')"  >block</button></li>
+            <li><button onclick="muteuser('<%=result._id%>')"  >mute</button></li>
+        </ul>
+    </div>
 
 
     <div class="masssage-container">

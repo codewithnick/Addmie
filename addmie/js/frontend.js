@@ -23,16 +23,15 @@ function save(id){
 function dot(id)
 {
   hide('menu'+id);
-  
+  var b=document.getElementById('menu'+id)
+  window.onclick = function(event) {
+  if (!event.target.matches('.doted')) {
+      b.style.display = "none";
+    }    
+  }
 }
 function hide(id){
   var popup = document.getElementById(id);
   popup.classList.toggle("hide");
   //console.log('hiding')
 }
-//window events
-/* window.onclick = function(event) {
-  var b=document.getElementsByClassName('menu')
-  b.style.display = "none";
-   
-  } */
