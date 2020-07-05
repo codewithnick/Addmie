@@ -1,14 +1,14 @@
-<div class='my-posts-container'>
+<div class='my-posts-container' id='<%=postobj._id%>'>
     <%var menuid='menu'+postobj._id%>
     <div class="my-posts-container-header">
          <%-include('postheader.ejs',{friend:postobj.username,postid:postobj._id});%> 
     </div>
     <div class="menu hide" id="<%=menuid%>" >
         <ul >
-            <li><a href="#">report</a></li>
-            <li><a href="#">visit page</a></li>
-            <li><a href="#">copy link</a></li>
-            <li><a href="#">block</a></li>
+            <li><button onclick="report('<%=postobj._id%>')"  >report</button></li>
+            <li><button onclick="copypostlink('<%=postobj._id%>')"  >copy link</button></li>
+            <li><button onclick="blockthispostuser('<%=postobj._id%>')"  >block</button></li>
+            <li><button onclick="messagethispostuser('<%=postobj._id%>')"  >message</button></li>
         </ul>
     </div>
     <div class="post-image">

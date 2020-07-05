@@ -164,6 +164,7 @@ module.exports=function(app){
 
 
      ////////////////////////////////////////// background authenticated ajax requests //////////////////////
+                            /////////////////// adding a new friend ////////////////////////////
      app.get('/ajax/addfriend',loginauth,function(req,res){
         //console.log(req.query)
         //console.log(req.url)
@@ -171,6 +172,8 @@ module.exports=function(app){
         query(req.session.username,req.query.text,client);
         res.end('success');
      });
+                ////////////////////////////////////messages dealings///////////////////////////
+                            ////////////////////////creating new conversation//////////////////
      app.post('/ajax/newmessage',bodyparserencoder,loginauth,function(req,res){
         //console.log(req)
         //console.log(req.body);    
@@ -178,14 +181,22 @@ module.exports=function(app){
         query(req.body,res,client);
         console.log('new message id created')
      });
+                            ////////////////////////append message to existing convo//////////////////
      app.post('/ajax/appendmessage',bodyparserencoder,loginauth,function(req,res){
         let query=require('../dbconnect/appendmessage.js');
         query(req.body,req.session.username,res,client);
         //console.log(req.body.convoid)
         console.log('trying to send new message')
      });
+                ////////////////////////////////post dealing////////////////////////////////////
+                                 ////////////////////////liking a post//////////////////
      app.post('/ajax/like',bodyparserencoder,loginauth,function(req,res){
         let query=require('../dbconnect/like.js');
+        query(req,res,client);
+        
+     });
+     app.get('/ajax/removepost',loginauth,function(req,res){
+        let query=require('../dbconnect/removepost.js');
         query(req,res,client);
         
      });
