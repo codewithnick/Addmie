@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "icon" type = "image/png" href = "../addmie/img/Addmie.png"> 
     <link rel="Stylesheet" href="../addmie/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="../addmie/css/gaurav.css">  
- 
+    <link rel="Stylesheet"  href="../addmie/css/gaurav.css">  
+    <link rel="Stylesheeet" href="../addmie/css/slider.css">
     <title>Settings</title>
 </head>
 <body>
-    <%-include('header.ejs',{username:settingsobj.username})%>
-    
+    <%-include('header.ejs',{username:username})%>
+ 
+    <div class="post-container" style="height: 100%;">
+        <ul>
+            <%for(i=0;i< postobj.length;i++){%>
+                <li><%-include('postcontainer.ejs',{postobj:postobj[i],username:username})%></li>
+            <%}%>
+        </ul>
+    </div>
+        
 </body>
 </html>

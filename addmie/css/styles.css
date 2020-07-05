@@ -376,3 +376,38 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
     width: 100%;
     border-bottom: 1px solid darkgray;
 }
+.settings_container{
+    border: 1px solid black;
+    height: 100%;
+    width: 100%;
+    margin: 50px;
+    border-radius: 30px;
+    padding: 30px;
+    font-size: 24px;
+    
+}
+.settings_container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.settings_container form div{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+.settings_container label{
+    font-size: 24px;
+    text-transform: capitalize;
+    padding: 5px;
+}
+ .settings_container input[type=text]{
+    border-radius: 10%;
+    height: 100%;
+    padding: 5px;
+ }
+ .settings_container input{
+     margin: 5px;
+ }

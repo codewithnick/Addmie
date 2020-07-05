@@ -103,6 +103,7 @@ module.exports=function(app){
         query(req,client);
         res.redirect('/'+req.session.username+'/profile');
     });
+    /////////////////////////////////////////home section\feed section////////////////////////////////
     app.get('/:username/home',loginauth,restrictionauth,function(req,res){
         console.log('request for home feed');
         let query =require('../dbconnect/homepage.js');
@@ -189,7 +190,7 @@ module.exports=function(app){
         console.log('trying to send new message')
      });
                 ////////////////////////////////post dealing////////////////////////////////////
-                                 ////////////////////////liking a post//////////////////
+                             ////////////////////////liking a post//////////////////
      app.post('/ajax/like',bodyparserencoder,loginauth,function(req,res){
         let query=require('../dbconnect/like.js');
         query(req,res,client);

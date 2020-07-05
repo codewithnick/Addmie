@@ -11,6 +11,42 @@
 </head>
 <body>
     <%-include('header.ejs',{username:settingsobj.username})%>
-    
+    <div class="settings_container">
+        <form>
+            <div>
+                <label>firstname</label>
+                <input type="text"/>
+            </div>            
+            <div>
+                <label>Lastname</label>
+                <input type="text"/>
+            </div>
+            <div>
+                <label>email</label>
+                <input type="text"/>
+            </div>
+                        
+            <div>
+                <label>location</label>
+                <input type="text"/>
+            </div>
+            <div>
+                <label>date of birth</label>
+                <input type="date"/>
+            </div>
+            <div>
+                <label>gender</label>
+                
+            </div>
+            <div>
+                male    <input type='radio' value="male"/>
+                female  <input type='radio' value="male"/>
+                anyother    <input type='radio' value="male"/>
+            </div>
+
+            
+            <input type="submit" value="Update"/>
+        </form>
+    </div>
 </body>
 </html>
