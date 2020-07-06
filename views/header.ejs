@@ -11,7 +11,7 @@
     <script src="../addmie/js/frontend.js"></script> 
 	
 	<div class="headermenu">
-			<div id ='wrapper'>
+			<div class ='wrapper'>
 				<div class="logo">
 					<img src="../addmie/img/Addmie.png">
 				</div>
@@ -23,18 +23,47 @@
 					</form>
 				</div>
 				<div>
-						<div id="wrapper" style="width:auto;">
+						<div class="headerbuttons" >
 							<%if(username){%>
-						<ul>
-							<li><a href=<%=homelink%>><div style="font-size:18px;">feed</div></a></li>
-							<li><a href=<%=explorelink%>><div style="font-size:18px;">explore</div></a></li>
-							<li><a href=<%=profilelink%>><div style="font-size:18px;">profile</div></a></li>
-							<li><a href=<%=messagelink%>><div style="font-size:18px;">messages</div></a></li>
-							<li><a href=<%=settingslink%>><div style="font-size:18px;">settings</div></a></li>
-							<li><a href='/logout'><div style="font-size:18px;">logout</div></a></li>
-
-						</ul>
-						<%}%>
+								<ul>
+									<li>
+										<a href=<%=homelink%> >
+											<div >
+												<i style="font-size:2.5em;" class="fas fa-home"></i>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href=<%=explorelink%>>
+											<div >
+												<i style="font-size:2.5em;" class="fas fa-eye"></i>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href=<%=profilelink%>>
+											<div >
+												<i style="font-size:2.5em;" class="fas fa-user-alt"></i>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href=<%=messagelink%>>
+											<div >
+												<i style="font-size:2.5em;" class="fas fa-feather-alt"></i>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href=<%=settingslink%>>
+											<div >
+												<i style="font-size:2.5em;" class="fas fa-cog"></i>
+											</div>
+										</a>
+									</li>
+									
+								</ul>
+							<%}%>
 						</div>
 				</div>
 			</div>

@@ -62,16 +62,11 @@ button::onclick{
 .headermenu{
     background-color: #00b9ed;
     height: 48px;
-    padding-left: auto;
-    border-bottom: 0px;
-    padding-right: auto;
     width: 100%;
 
 }
-#wrapper{
-    margin-left: auto;
-    margin-right: auto;
-    width:  1000px;
+.wrapper{
+    width:  100%;
     height: 48px;
     padding: 5px;
     padding-top: 0px;
@@ -79,22 +74,19 @@ button::onclick{
     display: flex;
     background-color: #00b9ed;
     align-items: center;
+    justify-content: center;
 }
-#wrapper ul li a div{
-    margin-left: 5px;
-    text-transform: capitalize;
-    display: flex;
-    background-color: #00b9ed;
-}
-#wrapper ul{
+.wrapper ul{
     display: flex;
     list-style: none;
 }
-#wrapper li{
-    background-color: #00b9ed;
+.headerbuttons{
+    width:auto;
+    justify-content: space-around;
 }
-#wrapper a{
-    text-decoration: none;
+.headerbuttons ul li{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .title{
     font-size: 48px;
@@ -124,11 +116,12 @@ button::onclick{
 }
 #search > input[type=text]{
     border: 1px solid black;
-    margin: 3px;
+    margin: 2px;
     height: 40px;
     font-size: 24px;
-    padding: none;
-    width: 350px;
+    padding: 2px;
+    width:  fit-content;
+    
     background: white;
     margin-right: 0px;
 }
@@ -398,9 +391,10 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
     justify-content: center;
     font-size: 16px;
 }
-.settings_container label{
+.settings_container label,.settings_container a{
     font-size: 24px;
     text-transform: capitalize;
+    text-decoration: none;
     padding: 5px;
 }
  .settings_container input[type=text]{
@@ -411,3 +405,12 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
  .settings_container input{
      margin: 5px;
  }
+ .settings_container button{
+     outline: none;
+     border: none;
+     background-color: transparent;
+ }
+.lightblue{
+    font-size: 2em;
+    color: #00b9ed;
+}
