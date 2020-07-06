@@ -330,12 +330,12 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
     font-size: 24px;
     
 }
-.settings_container form{
+.settings_container form,.settings_container section{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.settings_container form div{
+.settings_container form div,.settings_container section div{
     padding: 10px;
     display: flex;
     align-items: center;
@@ -348,11 +348,12 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
     text-decoration: none;
     padding: 5px;
 }
- .settings_container input[type=text]{
+ .settings_container input[type=text],select{
     border-radius: 10px ;
     border: 1px solid black;
     height: 100%;
     padding: 5px;
+    outline: none;
  }
  .settings_container input{
      margin: 5px;
@@ -365,4 +366,7 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
 .lightblue{
     font-size: 2em;
     color: #00b9ed;
+}
+.fa-toggle-off{
+    color: gray;
 }

@@ -13,12 +13,19 @@
 			<h1 class="center">New Here,</h1>
 			<h3 class="center">Signup Here</h3>			
             <form action="signup" class="form-inside" method='post'>
-                username<input type='text' name='Username' required/><br>
-				password<input type="text" name='Password' required/><br>
-				Firstname<input type="text" name='Fname' required/><br>
-				Lastname<input type="text" name='Lname' required/><br>
-				Date Of Birth<br><input type="date" name='DOB' required/><br>
-				Email<input type="text" name='Email' required/><br>
+                Username<input type='text' name='Username' placeholder='eg-testuser123' autocomplete="username" required/><br>
+				Password<input type="password" name='Password' placeholder='eg-$tr0ng_P@&&w0rD' autocomplete="current-password" required/><br>
+				Firstname<input type="text" name='Fname' placeholder='eg-Test' required/><br>
+				Lastname<input type="text" name='Lname' placeholder='eg-User' required/><br>
+				Date Of Birth<br><input type="text" placeholder="dd/mm/yyyy" name='DOB' required/><br>
+				Email<input type="email" name='Email' placeholder='eg-textuser@xyz.com' required/><br>
+				Gender			
+				<select name="Gender" required>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+					<option value="other">Any Other</option>
+				</select>
+				City<input type="text" name="City" placeholder='eg-Mumbai' required/>
                 <input type='submit' name='Submit'/>
             </form>
 		</div>
@@ -26,8 +33,8 @@
 			<h1 class="center">Already a Member</h1>
 			<h3 class="center">Login Here</h3>
 			<form action="login" class="form-inside" method='POST'>
-				username<input type='text' name='User' required/><br>
-				password<input type='text' name='Pass' required/>
+				username<input type='text' name='User' placeholder='eg-testuser123' autocomplete="username" required/><br>
+				password<input type='password' name='Pass' placeholder='eg-$tr0ng_P@&&w0rD' autocomplete="current-password" required/>
 				<input type="submit" name='submit'>
 
 			</form>

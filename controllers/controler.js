@@ -36,19 +36,21 @@ module.exports=function(app){
     });
     //request handling when login is requested
     app.post('/login',bodyparserencoder,function(req,res){
-            console.log('login requested');
-            let query=require('../'+'dbconnect/'+'login.js');
+            //console.log('login requested');
+            let query=require('../dbconnect/login.js');
             let exists=query.login({username:req.body.User,password:req.body.Pass},res,req,client);
             req.session.loggedIn=true;
             req.session.username=req.body.User;
     });
     //request handling when signup is requested
     app.post('/signup',bodyparserencoder,function(req,res){
-        console.log('signup requested');
+        //console.log('signup requested');
         //if validated sucessfully then fire insert query in database
-        let query=require('../'+'dbconnect/'+'newsignin.js');
-        query(req.body.Username,req.body.Password,req.body.Fname,req.body.Lname,req.body.DOB,req.body.Email,client);
-        query=require('../'+'dbconnect/'+'login.js');
+        let query=require('../dbconnect/newsignin.js');
+        query(req.body.Username,req.body.Password,req.body.Fname,req.body.Lname
+            ,req.body.DOB,req.body.Email,req.body.Gender,req.body.City,client);
+
+        query=require('../dbconnect/login.js');
         exists=query.login({username:req.body.Username,password:req.body.Password},res,req);       
         //move to profile page directly
     });
@@ -158,10 +160,15 @@ module.exports=function(app){
     ///////////////////////////////////// settings ///////////////////////////
     app.get('/:username/settings',loginauth,restrictionauth,function(req,res){
         let query=require('../dbconnect/settings');
-        query(req,res);
+        query.load(req,res,client);
      });
 
-
+     app.post('/:username/updatesettings',bodyparserencoder,loginauth,restrictionauth,function(req,res){
+        console.log('updatingsettings');
+        console.log(req.body)
+        let query=require('../dbconnect/settings');
+        query.update(req,res,client);
+    });
 
 
      ////////////////////////////////////////// background authenticated ajax requests //////////////////////
@@ -201,6 +208,14 @@ module.exports=function(app){
         query(req,res,client);
         
      });
+                ///////////////////////////// user settings /////////////////////////////////
+                            //////////////////// toggle //////////////////////
+    app.post('/ajax/changesettings',bodyparserencoder,loginauth,function(req,res){
+        let query=require('../dbconnect/settings.js');
+        //query(req.body,req.session.username,res,client);
+        console.log(req.body)
+        });
+    
     console.log('closing connection to db');
     client.close();
 

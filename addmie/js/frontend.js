@@ -30,3 +30,8 @@ function hide(id){
   popup.classList.toggle("hide");
   //console.log('hiding')
 }
+function togglebutton(id){
+  var element=document.getElementById(id)
+  element.classList.toggle('fa-toggle-off')
+  element.classList.toggle('fa-toggle-on')
+}

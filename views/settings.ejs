@@ -11,76 +11,105 @@
 </head>
 <body>
     <%-include('header.ejs',{username:settingsobj.username})%>
+    <%
+        var secretid ='secret'+settingsobj.username,
+        dateid ='date'+settingsobj.username,
+        notificationsid='notifications'+settingsobj.username,
+        update='/'+settingsobj.username+'/updatesettings'
+    %>
     <div class="flex flex_center">
         <div class="settings_container">
-            <form>
+            <form method="POST" action="<%=update%>">
                 <div>
                     <label>firstname</label>
-                    <input type="text"/>
+                    <input type="text" value="<%=settingsobj.fname%>" name="fname"/>
                 </div>            
                 <div>
                     <label>Lastname</label>
-                    <input type="text"/>
+                    <input type="text" value="<%=settingsobj.lname%>" name="lname"/>
                 </div>
                 <div>
                     <label>email</label>
-                    <input type="text"/>
+                    <input type="text" value="<%=settingsobj.email%>" name="email"/>
                 </div>
                             
                 <div>
-                    <label>location</label>
-                    <input type="text"/>
+                    <label>city</label>
+                    <input type="text" value="<%=settingsobj.city%>" name="city"/>
                 </div>
                 <div>
                     <label>date of birth</label>
-                    <input type="date"/>
+                    <input type="text" value="<%=settingsobj.dob%>" name="dob"/>
                 </div>
                 <div>
-                    <label>gender</label>
-                    
+                    <label>gender</label>                    
                 </div>
                 <div>
-                    male    <input type='radio' value="male"/>
-                    female  <input type='radio' value="male"/>
-                    anyother    <input type='radio' value="male"/>
+                    <select style="width: 100px;" name="gender">
+                        
+                        <div>
+                            <option value="male" <% if(settingsobj.gender=='male'){ %> selected <%}%> >
+                                Male
+                            </option>
+                        </div>
+                        
+                        <div>
+                            <option value="female" <% if(settingsobj.gender=='female'){ %> selected <%}%> >
+                                Female
+                            </option>
+                        </div>
+                        <div>
+                            <option value="other" <% if(settingsobj.gender=='other'){ %> selected <%}%> >
+                                Any Other
+                            </option>
+                        </div>
+                    </select>
                 </div>
                 
-                
-                <input type="submit" value="Update"/>
+                <div >
+                    <input type="submit" value="Update" style="width: 100px; height: 50px;font-size: 16px;"/>
+                </div>
+            
             </form>
-            
-
-            <div>
-                <label>Allow secret messages</label>
-                <button>
-                    <i class="fas fa-toggle-on  lightblue"></i>
-                </button>
-            </div>
-            <div>
-                <label>Allow Date requests</label>
-                <button>
-                    <i class="fas fa-toggle-on  lightblue"></i>
-                </button>
-            </div>
-            <div>
-                <label>Allow notifications</label>
-                <button>
-                    <i class="fas fa-toggle-on  lightblue"></i>
-                </button>
-            </div>
-            <div>
-                <a href="#">change password</a>
-            </div>
-            <div>
-                <a href="/logout">Logout</a>
-            </div>
-            <div>
-                <a href="#">Blocked accounts</a>
-            </div>
-            <div>
-                <button><a style="color: red;">Delete my account</a></button>
-            </div>
-            
+            <hr>
+            <section>
+                <div>
+                    <label>Allow secret messages</label>
+                    <button onclick="togglebutton('<%=secretid%>');changeusersettings('<%=settingsobj.username%>')">
+                        <i  id='<%=secretid%>'  class="fas lightblue 
+                            <%if(settingsobj.secret==true){%>fa-toggle-on<%}else{%>fa-toggle-off<%}%>">
+                        </i>
+                    </button>
+                </div>
+                <div>
+                    <label>Allow Date requests</label>
+                    <button onclick="togglebutton('<%=dateid%>');changeusersettings('<%=settingsobj.username%>')" >
+                        <i  id='<%=dateid%>' class="fas lightblue 
+                            <%if(settingsobj.dates==true){%>fa-toggle-on<%}else{%>fa-toggle-off<%}%>">
+                        </i>
+                    </button>
+                </div>
+                <div>
+                    <label>Allow notifications</label>
+                    <button onclick="togglebutton('<%=notificationsid%>');changeusersettings('<%=settingsobj.username%>')">
+                        <i  id='<%=notificationsid%>'  class="fas lightblue 
+                            <%if(settingsobj.notifications==true){%>fa-toggle-on<%}else{%>fa-toggle-off<%}%>">
+                        </i>
+                    </button>
+                </div>
+                <div>
+                    <a href="#">change password</a>
+                </div>
+                <div>
+                    <a href="/logout">Logout</a>
+                </div>
+                <div>
+                    <a href="#">Blocked accounts</a>
+                </div>
+                <div>
+                    <button><a style="color: red;">Delete my account</a></button>
+                </div>
+            </section> 
         </div>
     </div>
 </body>
