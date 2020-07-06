@@ -59,84 +59,35 @@ button::onclick{
 ::-webkit-scrollbar-thumb {
     background: #FF0000;
 }
-.headermenu{
+nav{
     background-color: #00b9ed;
-    height: 48px;
-    width: 100%;
 
+    
 }
-.wrapper{
-    width:  100%;
-    height: 48px;
-    padding: 5px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+.flex{
     display: flex;
-    background-color: #00b9ed;
+}
+.flex_center{
     align-items: center;
     justify-content: center;
 }
-.wrapper ul{
-    display: flex;
-    list-style: none;
+.title{
+    font-size: 32px;
+    font-weight: 600;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#search_form button,#search_form textarea{
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+#search_form{
+    border: 1px solid black;
 }
 .headerbuttons{
-    width:auto;
-    justify-content: space-around;
-}
-.headerbuttons ul li{
-    margin-left: 5px;
-    margin-right: 5px;
-}
-.title{
-    font-size: 48px;
-    display: flex;
-    background: transparent;
-    align-items: center;
-}
-
-.logo{
-    width: 48px;
-}
-.logo img{
-    width: 48px;
-    height: 48px;
-}
-
-.search_box{
-    background: transparent;
-    
-}
-.search_box form{
-    display: flex;
-    
-}
-#search{
-    background: transparent;
-}
-#search > input[type=text]{
-    border: 1px solid black;
-    margin: 2px;
-    height: 40px;
-    font-size: 24px;
-    padding: 2px;
-    width:  fit-content;
-    
-    background: white;
-    margin-right: 0px;
-}
-/* #search > input[type=button]{
-    
-} */
-#search_font{
-    height: 38px;
-    width: 48px;
-    border: 1px solid black;
-    background-color: white;
-    background-image: url('../img/search_icon.png');
-    margin: 3px;
-    background-size: cover;
-    margin-left: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .entry-container{
     display: flex;
@@ -373,7 +324,7 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
     border: 1px solid black;
     height: 100%;
     width: 100%;
-    margin: 50px;
+    margin: 100px;
     border-radius: 30px;
     padding: 30px;
     font-size: 24px;
@@ -398,7 +349,8 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
     padding: 5px;
 }
  .settings_container input[type=text]{
-    border-radius: 10%;
+    border-radius: 10px ;
+    border: 1px solid black;
     height: 100%;
     padding: 5px;
  }

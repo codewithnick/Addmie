@@ -10,58 +10,59 @@
     <script src="../addmie/js/client.js"></script>
     <script src="../addmie/js/frontend.js"></script> 
 	
-	<div class="headermenu">
-			<div class ='wrapper'>
+	<div class="headermenu ">
+			<div class ='flex flex_center'>
 				<div class="logo">
-					<img src="../addmie/img/Addmie.png">
+					<img src="../addmie/img/Addmie.png" height="35px" width="35px">
 				</div>
 				<div class="title"> Addmie</div>
-				<div class="search_box">
-					<form action="search.php" method="GET" id= "search">
-						<input type="text" name="q" size="60" placeholder="search"> 
-						<div id='search_font'><input type='button' name="search_submit" placeholder="search_submit"/></div>
-					</form>
-				</div>
+			
 				<div>
-						<div class="headerbuttons" >
+						<div  >
 							<%if(username){%>
-								<ul>
-									<li>
+								<ul class="flex flex_center">
+									<li class="headerbuttons">
 										<a href=<%=homelink%> >
 											<div >
 												<i style="font-size:2.5em;" class="fas fa-home"></i>
 											</div>
 										</a>
-									</li>
-									<li>
+									</li >
+									<li class="headerbuttons">
 										<a href=<%=explorelink%>>
 											<div >
 												<i style="font-size:2.5em;" class="fas fa-eye"></i>
 											</div>
 										</a>
 									</li>
-									<li>
+									<li class="headerbuttons">
 										<a href=<%=profilelink%>>
 											<div >
 												<i style="font-size:2.5em;" class="fas fa-user-alt"></i>
 											</div>
 										</a>
 									</li>
-									<li>
+									<li class="headerbuttons">
 										<a href=<%=messagelink%>>
 											<div >
 												<i style="font-size:2.5em;" class="fas fa-feather-alt"></i>
 											</div>
 										</a>
 									</li>
-									<li>
+									<li class="headerbuttons">
 										<a href=<%=settingslink%>>
 											<div >
 												<i style="font-size:2.5em;" class="fas fa-cog"></i>
 											</div>
 										</a>
 									</li>
-									
+									<li class="headerbuttons">
+										<a href=<%=settingslink%>>
+											<div >
+												<i  style="font-size:2.5em;" class="fas fa-search"></i>
+											</div>
+										</a>
+									</li>
 								</ul>
 							<%}%>
 						</div>
