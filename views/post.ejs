@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" type = "image/png" href = "../addmie/img/Addmie.png"> 
+    <link rel="Stylesheet" href="../addmie/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../addmie/css/gaurav.css">  
+    <link rel="stylesheet" type="text/css" href="../addmie/css/post.css"> 
+    <title>Settings</title>
+</head>
+<body>
+    <%-include('header.ejs',{username:username})%>
+    <section style="height: 100;width: 100%;" class="flex flex_center">
+        <div class="postbox flex flex_center">
+            <div class='my-posts-container' id='<%=postobj._id%>'>
+                <%var menuid='menu'+postobj._id%>
+                <div class="my-posts-container-header">
+                     <%-include('postheader.ejs',{friend:postobj.username,postid:postobj._id});%> 
+                </div>
+                <div class="menu hide" id="<%=menuid%>" >
+                    <ul >
+                        <li><button onclick="viewpost('<%=postobj._id%>')"  >view</button></li>
+                        <li><button onclick="report('<%=postobj._id%>')"  >report</button></li>
+                        <li><button onclick="copypostlink('<%=postobj._id%>')"  >copy link</button></li>
+                        <li><button onclick="blockthispostuser('<%=postobj._id%>')"  >block</button></li>
+                        <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','false')"  >message</button></li>
+                        <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','True')"  >secret</button></li>
+                    </ul>
+                </div>
+                <div class="post-image">
+                    <img src="../addmie/img/Addmie.png" alt="image" height="400px" width="auto" style="margin: 5px;">
+                </div>
+               
+                <span>
+                    <%-include('likecommentsharesave.ejs',{postid:postobj._id,username:username,likes:postobj.likes})%>
+                </span>
+                <hr>
+                <div class="caption"> 
+                    <%=postobj.caption%> 
+                </div>
+                
+            </div>
+            <div class='my-posts-container' id='<%=postobj._id%>'>
+                <%var menuid='menu'+postobj._id%>
+                <div class="my-posts-container-header">
+                     <%-include('postheader.ejs',{friend:postobj.username,postid:postobj._id});%> 
+                </div>
+                <div class="menu hide" id="<%=menuid%>" >
+                    <ul >
+                        <li><button onclick="viewpost('<%=postobj._id%>')"  >view</button></li>
+                        <li><button onclick="report('<%=postobj._id%>')"  >report</button></li>
+                        <li><button onclick="copypostlink('<%=postobj._id%>')"  >copy link</button></li>
+                        <li><button onclick="blockthispostuser('<%=postobj._id%>')"  >block</button></li>
+                        <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','false')"  >message</button></li>
+                        <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','True')"  >secret</button></li>
+                    </ul>
+                </div>
+                <div class="post-image">
+                    <img src="../addmie/img/Addmie.png" alt="image" height="400px" width="auto" style="margin: 5px;">
+                </div>
+               
+                <span>
+                    <%-include('likecommentsharesave.ejs',{postid:postobj._id,username:username,likes:postobj.likes})%>
+                </span>
+                <hr>
+                <div class="caption"> 
+                    <%=postobj.caption%> 
+                </div>
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>

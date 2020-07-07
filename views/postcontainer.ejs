@@ -5,10 +5,12 @@
     </div>
     <div class="menu hide" id="<%=menuid%>" >
         <ul >
+            <li><button onclick="viewpost('<%=postobj._id%>')"  >view</button></li>
             <li><button onclick="report('<%=postobj._id%>')"  >report</button></li>
             <li><button onclick="copypostlink('<%=postobj._id%>')"  >copy link</button></li>
             <li><button onclick="blockthispostuser('<%=postobj._id%>')"  >block</button></li>
-            <li><button onclick="messagethispostuser('<%=postobj._id%>')"  >message</button></li>
+            <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','false')"  >message</button></li>
+            <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','True')"  >secret</button></li>
         </ul>
     </div>
     <div class="post-image">

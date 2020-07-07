@@ -98,6 +98,15 @@ module.exports=function(app){
         res.redirect('/');
         
     });
+
+    //request handling fro post view
+    app.get('/post',loginauth,function(req,res){
+        console.log(req.query.id);
+        var query=require('../dbconnect/loadpost');
+        query(req,res,client);
+
+    });
+
     //request handling when user posts
     app.post('/:username/sendpost',bodyparserencoder,loginauth,restrictionauth,function(req,res){
         console.log('post has been recived');
@@ -216,6 +225,13 @@ module.exports=function(app){
         //console.log(req.body)
         });
     
+
+
+
+
+    app.get('/report',function(req,res){
+        res.send('this feature is not yet updated')
+    });
     console.log('closing connection to db');
     client.close();
 

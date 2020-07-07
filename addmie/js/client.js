@@ -17,8 +17,13 @@ function liked(id){
     
     var jqxhr =$.post( "/ajax/like", { id:id} , (object)=>{    });
 }
+function viewpost(id){
+    hide('menu'+id);
+    window.location.href='/post?&id='+id;
+}
 function report(id){
     hide('menu'+id);
+    window.location.href='/report'
 }
 function copypostlink(id){
     hide('menu'+id);
@@ -44,9 +49,11 @@ function removepost(id){
 function blockthispostuser(id){
     hide('menu'+id);
 }
-function messagethispostuser(id){
+function messagethispostuser(id,username,friend,secret){
     hide('menu'+id);
+    window.location.href='/'+username+'/direct/new/'+friend+'?&secret='+secret;
 }
+
 function changeusersettings(user){
     var a=document.getElementById('secret'+user);
     var b=document.getElementById('date'+user);
