@@ -13,30 +13,32 @@
 <body>
     <%- include('header.ejs',({username:userobj.username}))%>
     <%var postlink="/"+userobj.username+"/sendpost"; %>
-    <div class="grid-container">
-        <div class="grid-container-left">
-            <div class="profile">
+    <div class="flex grid-container">
+        <div class="flex grid-container-left">
+            <div class="flex profile">
                 <div id="profile_picture"><img src="../addmie/img/Addmie.png" alt="image" height="155px" width="155px" style="margin: 5px;"></div>
                 <div id="username"><a href=><%=userobj.username%></a></div>
             </div>
-            <div class="container" id="friends">
-                <h1>friends</h1>
-                <div class="friends-container">
-                    <ul>
-                        <%for(i=0;i< userobj.friends.length;i++){%>
-                            <li><%- include('accountheader.ejs',{friend:userobj.friends[i],username:'hi'})%></li>
-                            <!-- fix this -->
-                        <%}%>
-                    </ul>
-                </div>                
+            <div class="flex" id="containerbar">
+                <div class="flex container">
+                    <h1>fans</h1>  
+                    <h1>posts</h1>
+                    <h1>likes</h1>          
+                </div>
+                <div class="flex container">
+                    <h2>0</h2>
+                    <h2>0</h2>
+                    <h2>0</h2>
+                </div>
             </div>
+            
         </div>
         <div class="grid-container-right" >
             <!-- <div class="postform">
                 
                 
                 <form  method="POST" action=<%=postlink%> >
-                    <input type='text' name='text' value='Write Something Here'/>
+                    <input type='text' name='text' placeholder='caption'/>
                     <input id='post' type='submit' name='post' value='Post'/>
                 </form>
             </div> -->
