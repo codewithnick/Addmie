@@ -21,17 +21,41 @@ module.exports.update=async function main(req,res,client)
         console.error(e);
     }
     
-    res.redirect('/'+req.session.username+'/settings');
+    res.redirect('/'+req.session.username+'/settings')
 }
 module.exports.change=async function main(req,res,client)
 {
     try{
-        var result=await client.db('profile').collection('user').updateOne()
+        ///converting from string to bool
+        if(req.body.secret=='true'){
+            var secret =true;
+        }
+        else{
+            var secret=false
+        }
+        if(req.body.dates=='true'){
+            var dates =true;
+        }
+        else{
+            var dates=false
+        }
+        if(req.body.notifications=='true'){
+            var notifications =true;
+        }
+        else{
+            var notifications=false
+        }
+        var settingsobj={
+            secret:secret,
+            dates:dates,
+            notifications:notifications
+        }
+        var result=await client.db('profile').collection('user').updateOne({username:req.session.username},{$set:settingsobj})
     }
     catch (e) {
         console.log('error connecting to db');
         console.error(e);
     }
     
-    //res.redirect('/'+req.session.username+'/settings');
+    res.end('changed settings')
 }

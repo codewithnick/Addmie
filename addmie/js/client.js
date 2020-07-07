@@ -51,14 +51,12 @@ function changeusersettings(user){
     var a=document.getElementById('secret'+user);
     var b=document.getElementById('date'+user);
     var c=document.getElementById('notifications'+user);
-    
-    console.log(user)
-        a=(a)=>{if(a.classList.includes('fa-toggle-on')){return true}else {return false}},
-        b=(b)=>{if(b.classList.includes('fa-toggle-on')){return true}else {return false}},
-        c=(c)=>{if(c.classList.includes('fa-toggle-on')){return true}else {return false}}
+        if(a.classList.contains('fa-toggle-on')){a=true}else {a=false}
+        if(b.classList.contains('fa-toggle-on')){b=true}else {b=false}
+        if(c.classList.contains('fa-toggle-on')){c=true}else {c=false}
     settingsobject={
         secret:a,
-        date:b,
+        dates:b,
         notifications:c
     }
     $.post( "/ajax/changesettings", settingsobject , (object)=>{

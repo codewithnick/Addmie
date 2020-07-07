@@ -212,8 +212,8 @@ module.exports=function(app){
                             //////////////////// toggle //////////////////////
     app.post('/ajax/changesettings',bodyparserencoder,loginauth,function(req,res){
         let query=require('../dbconnect/settings.js');
-        //query(req.body,req.session.username,res,client);
-        console.log(req.body)
+        query.change(req,res,client);
+        //console.log(req.body)
         });
     
     console.log('closing connection to db');
