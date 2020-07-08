@@ -90,8 +90,9 @@
                             </button>
                         </span>
                     </div>
-
-                    <div class="flex flex_center"><%-include('comment.ejs',{})%></div>
+                    <%for(i=0;i< comments.length;i++){%>
+                    <div class="flex flex_center"><%-include('comment.ejs',{comment:comments[i]})%></div>
+                    <%}%>
                 </div>
                 
                 

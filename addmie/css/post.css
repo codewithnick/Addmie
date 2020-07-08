@@ -31,9 +31,10 @@
     height: fit-content;
     width: 250px;
     word-wrap: break-word;
-    text-overflow: clip;
     color: rgb(65,65,65);
     font-weight: 100;
+    text-align: left;
+    margin-top: 15px;
 }
 #comments h3 a{
     text-decoration: none;
@@ -64,4 +65,5 @@
     width: 100%;
     resize: none;
     outline: none;
+    overflow: hidden;
 }
