@@ -79,13 +79,11 @@ module.exports=function(app){
         }
         else{
             console.log('get request for profile');
-            var userobj={
-                username:req.params.username,
-            };
+           
             let fetch=require('../dbconnect/loadprofile.js');
-            const fname=null;
-            fetch(req.params.username,res,client);
-            console.log('profile loaded');
+            
+            fetch(req,res,client);
+            
         }
         
     });
@@ -124,20 +122,7 @@ module.exports=function(app){
         let query =require('../dbconnect/homepage.js');
         query(req.session.username,res,client);
     });
-    //////////////////////////////explore section/////////////////////////
-    app.get('/:username/explore/friends',loginauth,restrictionauth,function(req,res){
-        console.log('loading some friends to be added');
-        let query =require('../dbconnect/findfriends.js');
-        query(req.session.username,res,client);
-       console.log('found friends');
-    });
-    app.get('/:username/explore/posts',loginauth,restrictionauth,function(req,res){
-        console.log('finding some posts to be liked');
-        let query =require('../dbconnect/findposts.js');
-        query(req.session.username,res,client);
-       console.log('found posts');
-     });
-
+    
 
 
 

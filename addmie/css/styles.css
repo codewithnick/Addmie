@@ -113,10 +113,18 @@ nav{
     align-items: center;
 }
 #containerbar{
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;   
+}
+#containerbar p{
+    font-size: 16px;
+    text-align: left;
+    word-wrap: break-word;
+    width: 80%;
+    font-style: oblique;
+    color: rgba(65,65,65,0.75);
+}
+#bio{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .container{
     width: 100%;
@@ -160,12 +168,23 @@ nav{
     align-items: center;
     overflow: hidden;
 }
-
 #username{
     color: rgba(255,255,255,1);
     background-color: rgba(255, 230, 5,0.3);
+    padding: 10px;
+    
+}
+#username a{
     text-align: center;
-    padding: 2px;
+    padding: 10px;
+    font-size: 16px;
+   
+}
+.name div{
+    margin: 10px;
+    font-size: 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 .postform form{
     display: flex;

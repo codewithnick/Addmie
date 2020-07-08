@@ -1,15 +1,15 @@
 
 var result=null;
 var posts=null;
-module.exports = async function dbconnect(from,res,client)
+module.exports = async function dbconnect(req,res,client)
 {   
        try {
         // Connect to the MongoDB cluster
         //await client.connect();
         console.log('client connected sucessfully');
         // Make the appropriate DB calls
-        result=await client.db('profile').collection('user').findOne({username:from});
-        posts=await client.db('profile').collection('post').find({username:from}).toArray();
+        result=await client.db('profile').collection('user').findOne({username:req.params.username});
+        posts=await client.db('profile').collection('post').find({username:req.params.username}).toArray();
         //console.log(result);
         //console.log(posts);
     } catch (e) {
@@ -20,7 +20,7 @@ module.exports = async function dbconnect(from,res,client)
         console.log('closing client connection');
         //await client.close();
         //console.log(posts);
-        await res.render('profile.ejs',{userobj:result,postobj:posts});
+        await res.render('profile.ejs',{userobj:result,postobj:posts,username:req.session.username});
     }
 
 }

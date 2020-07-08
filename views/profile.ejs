@@ -14,12 +14,17 @@
     <%- include('header.ejs',({username:userobj.username}))%>
     <%var postlink="/"+userobj.username+"/sendpost"; %>
     <div class="flex grid-container">
-        <div class="flex grid-container-left">
+        <div class="flex grid-container-left ">
             <div class="flex profile">
+                <div class="flex name"> 
+                    <div><%=userobj.fname%></div>
+                    <div><%=userobj.lname%></div>
+                </div>
                 <div id="profile_picture"><img src="../addmie/img/Addmie.png" alt="image" height="155px" width="155px" style="margin: 5px;"></div>
                 <div id="username"><a href=><%=userobj.username%></a></div>
+                
             </div>
-            <div class="flex" id="containerbar">
+            <div class="flex flex_column flex_center" id="containerbar">
                 <div class="flex container">
                     <h1>fans</h1>  
                     <h1>posts</h1>
@@ -30,6 +35,32 @@
                     <h2>0</h2>
                     <h2>0</h2>
                 </div>
+                <p id="bio">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt aliquid voluptatibus fugiat non itaque reprehenderit, voluptas vero quam tempore ad consectetur repellat illo hic architecto, voluptatum, dicta vel iure quia. Cumque, impedit, amet laudantium earum at modi quos error quibusdam sunt aut alias velit exercitationem dolorum fugiat odit dolorem accusamus perspiciatis. Enim eos consequatur adipisci dolorem optio placeat quas facilis reprehenderit sequi architecto ipsam, culpa cum, odit aliquid corrupti voluptates obcaecati eius necessitatibus iste doloremque? Laboriosam aliquid minus at alias numquam, temporibus eius eveniet vitae omnis repellat error cumque assumenda corrupti impedit adipisci. Eos at quae, saepe repudiandae atque non?
+                </p>
+                <div class='profileoptions'>
+                    <select>
+                        <option value="">follow</option>
+                        <option value="">block</option>
+                        <option value="">copy link</option>
+                    </select>
+                    <button>
+                        message
+                    </button>
+                    <button>
+                        secret
+                    </button>
+                </div>
+               
+            </div>
+            <div class="headerbuttons flex flex_center" style="width: 10%;">
+                
+                <button class='doted'>
+                    <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        </svg>
+                </button>
+                
             </div>
             
         </div>
@@ -46,7 +77,8 @@
                 <h1>your posts</h1>
                 <ul>
                     <%for(i=0;i< postobj.length;i++){%>
-                        <li><%-include('mypostcontainer.ejs',{postobj:postobj[i],username:userobj.username});%></li>
+                        <li><%-include('postcontainer.ejs',{postobj:postobj[i],username:username});%></li>
+                        
                     <%}%>
                 </ul>
                 
