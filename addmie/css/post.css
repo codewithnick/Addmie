@@ -8,9 +8,10 @@
     width: 50%;
     height: 100%;
 }
-.postbox_left{
-    border-right: 1px solid black;
-    margin-right: 5px;
+.postbox_right{
+    border-left: 1px solid black;
+    margin-left: 5px;
+    padding-left: 5px;
 }
 
 #likes ,#comments{
@@ -53,8 +54,14 @@
 #newcomment button{
     color: blue;
 }
-#newcomment textarea{
-    font-size: 12px;
-    color: black;
-    background-color: rgba(165, 165, 165, 0.2);
+
+#commenttext{
+    font-size: 16px;
+    color: black;    
+    background-color: lightcyan;
+    border: none;
+    height: 30%;
+    width: 100%;
+    resize: none;
+    outline: none;
 }

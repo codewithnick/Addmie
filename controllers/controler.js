@@ -209,9 +209,17 @@ module.exports=function(app){
                              ////////////////////////liking a post//////////////////
      app.post('/ajax/like',bodyparserencoder,loginauth,function(req,res){
         let query=require('../dbconnect/like.js');
+        
         query(req,res,client);
         
      });
+                            //////////////////////// commenting on a post //////////////
+    app.post('/ajax/newcomment',bodyparserencoder,loginauth,function(req,res){
+        let query=require('../dbconnect/comment.js');
+        console.log(req.body)
+        query(req,res,client);        
+        });
+                            //////////////////////// removing a post //////////////
      app.get('/ajax/removepost',loginauth,function(req,res){
         let query=require('../dbconnect/removepost.js');
         query(req,res,client);

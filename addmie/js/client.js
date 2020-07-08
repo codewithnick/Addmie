@@ -70,4 +70,17 @@ function changeusersettings(user){
 
     });
 }
+function postcomment(username,postid){
+    var comment=$('#commenttext');
+    var commentobject={
+        comment:comment.val().trim(),
+        username:username,
+        postid:postid
+    }
+    
+    $.post( "/ajax/newcomment", commentobject , ()=>{
+        window.location.href='/post?&id='+postid
+    });
+
+}
 

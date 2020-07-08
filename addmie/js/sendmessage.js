@@ -3,7 +3,7 @@ $(document).ready(
 );
 function getmessagefrominput(){
     var message =$('#message');
-    var value = message.val();
+    var value = message.val().trim();
     message.val('');
     return value;
 }
