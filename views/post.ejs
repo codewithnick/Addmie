@@ -35,7 +35,7 @@
                     </div>
                    
                     <span>                        
-                    
+                        <%-include('likecommentsharesave.ejs',{username:username,postobj:postobj})%>
                         
                     </span>
                     <hr>
@@ -68,7 +68,7 @@
                         }
                     }%>
                 </div>
-                <div id="comments" class="flex" >
+                <div id="comments" class="flex hide" >
                     <div id='newcomment' class="flex">                        
                         <div class="flex flex_column flex_center">
                             <div class="post_profile_picture">

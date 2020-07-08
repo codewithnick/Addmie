@@ -1,33 +1,63 @@
-
     <form id='btnform' class="likecommentsharesave">
         
         <%
-            var likeid='like'+postid,
-            commentid='comment'+postid,
-            shareid='share'+postid,
-            saveid='save'+postid, 
-            likeidvalue='like'+postid+'value',
-            commentidvalue='comment'+postid+'value',
-            shareidvalue='share'+postid+'value',
-            saveidvalue='save'+postid+'value'; 
-        %>
-    <!--      <img src="../addmie/img/">  -->
-        <button type="button" class="like btn" onclick="like('<%=postid%>')" >       
-            <i id='<%=likeid%>' class="<%if(likes.includes(username)){%> fas fa-heart<%}else{%> far fa-heart<%}%>  " ></i>
-            <div class="likes">
-                <div>likes:</div>
-                <div id="<%=likeidvalue%>"><%=likes.length%></div>
-            </div>
-        </button>
-        <button type="button"   class="comment btn" onclick="comment('<%=postid%>')">
-            <i id='<%=commentid%>' class="far fa-comment-dots"></i>
-        </button>
+            var likeid='like'+postobj._id,
+            commentid='comment'+postobj._id,
+            shareid='share'+postobj._id,
+            saveid='save'+postobj._id, 
 
-        <button type="button"   class="share btn" onclick="share('<%=postid%>')">
-            <i id='<%=shareid%>' class="far fa-paper-plane"></i>
-        </button>
-        <button type="button"   class="save btn" onclick="save('<%=postid%>')">
-            <i id='<%=saveid%>' class="far fa-star"></i>
-        </button>
-    
+            likeidvalue='like'+postobj._id+'value',
+            commentidvalue='comment'+postobj._id+'value',
+            shareidvalue='share'+postobj._id+'value',
+            saveidvalue='save'+postobj._id+'value',
+            
+            likelink='/post?&id='+postobj._id+'#likes';            
+            commentlink='/post?&id='+postobj._id+'#comments';
+            sharelink='/post?&id='+postobj._id+'#shares';
+            savelink='/post?&id='+postobj._id+'#saves';
+        %>
+        <div class="flex flex_column flex_center">
+            <button type="button" class="like btn" onclick="like('<%=postobj._id%>')" >       
+                <i id='<%=likeid%>' class="<%if(postobj.likes.includes(username)){%> fas fa-heart<%}else{%> far fa-heart<%}%>  " ></i>                
+            </button>
+            <span>
+                <a href="<%=likelink%>" class="flex">
+                    <div>likes:</div>
+                    <div id="<%=likeidvalue%>"><%=postobj.likes.length%></div>
+                </a>
+            </span>
+        </div>
+        <div class="flex flex_column flex_center">
+            <button type="button"   class="comment btn" onclick="comment('<%=postobj._id%>')">
+                <i id='<%=commentid%>' class="far fa-comment-dots"></i>
+            </button>
+            <span>
+                <a href="<%=commentlink%>" class="flex">
+                    <div>comments:</div>
+                    <div id="<%=commentidvalue%>"><%=postobj.likes.length%></div>
+                </a>
+            </span>
+        </div>
+        <div class="flex flex_column flex_center">
+            <button type="button"   class="share btn" onclick="share('<%=postobj.postid%>')">
+                <i id='<%=shareid%>' class="far fa-paper-plane"></i>
+            </button>
+            <span>
+                <a href="<%=sharelink%>" class="flex">
+                    <div>shares:</div>
+                    <div id="<%=shareidvalue%>"><%=postobj.likes.length%></div>
+                </a>
+            </span>
+        </div>
+        <div class="flex flex_column flex_center">
+            <button type="button"   class="save btn" onclick="save('<%=postobj.postid%>')">
+                <i id='<%=saveid%>' class="far fa-star"></i>
+            </button>
+            <span>
+                <a href="<%=savelink%>" class="flex">
+                    <div>saves:</div>
+                    <div id="<%=saveidvalue%>"><%=postobj.likes.length%></div>
+                </a>
+            </span>
+        </div>    
     </form>

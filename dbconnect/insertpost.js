@@ -10,6 +10,10 @@ module.exports = async function dbconnect(req,client)
             username:req.session.username,
             caption:req.body.text,
             likes:[],
+            comments:[],
+            shares:[],
+            saves:[],
+            rating:0,
             creationdate:mm+'/'+dd+'/'+yyyy,
             blob:null
         };

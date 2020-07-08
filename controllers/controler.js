@@ -73,16 +73,20 @@ module.exports=function(app){
     });
     ////////to view others account///////////
     app.get('/profile/:username',loginauth,function(req,res){
-        
-        console.log('get request to profile');
-        var userobj={
-            username:req.params.username,
-        };
-        let fetch=require('../dbconnect/loadprofile.js');
-        const fname=null;
-        fetch(req.params.username,res,client);
-        console.log('profile loaded');
-    
+        if(req.session.username==req.params.username){
+            console.log('oops wrong url')
+            res.redirect('/'+req.session.username+'/profile')
+        }
+        else{
+            console.log('get request for profile');
+            var userobj={
+                username:req.params.username,
+            };
+            let fetch=require('../dbconnect/loadprofile.js');
+            const fname=null;
+            fetch(req.params.username,res,client);
+            console.log('profile loaded');
+        }
         
     });
     /////////////////////////////////////////////// session pages ////////////////////////////////////////  

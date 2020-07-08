@@ -67,3 +67,7 @@
     outline: none;
     overflow: hidden;
 }
+#likes.hide:target {display:block;}
+#comments.hide:target {display:block;}
+#shares.hide:target {display:block;}
+#saves.hide:target {display:block;}

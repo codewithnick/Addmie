@@ -1,4 +1,4 @@
-
+<%var link= '/profile'+comment.postedby%>
     <span class="flex likecommentsharesave">
         <div class="flex flex_column flex_center">
             <div class="post_profile_picture">
@@ -18,12 +18,14 @@
             </p>
         
         
-        <div>
-            <button type="button" class="like btn" onclick="" >       
-                <i  ></i>
-                <div class="likes">                    
-                    <a><div id=""></div></a>
-                </div>
+        
+        <div class="flex flex_column flex_center">
+            <button type="button" class="like btn" onclick="likecomment('')" >       
+                <i class="fas fa-heart" ></i>                
             </button>
+            <span>
+                
+                <div ><%=postobj.likes.length%></div>
+            </span>
         </div>
     </span>

@@ -269,6 +269,10 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
 .likecommentsharesave button i{
     font-size: 1.5em;
 }
+.likecommentsharesave a{
+    text-decoration: none;
+    color: lightslategray;
+}
 .likecommentsharesave .like .fas{
     color:red
 }
