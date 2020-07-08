@@ -11,64 +11,154 @@
 </head>
 <body>
     <%-include('header.ejs',{username:username})%>
-    <section style="height: 100;width: 100%;" class="flex flex_center">
-        <div class="postbox flex flex_center">
-            <div class='my-posts-container' id='<%=postobj._id%>'>
-                <%var menuid='menu'+postobj._id%>
-                <div class="my-posts-container-header">
-                     <%-include('postheader.ejs',{friend:postobj.username,postid:postobj._id});%> 
-                </div>
-                <div class="menu hide" id="<%=menuid%>" >
-                    <ul >
-                        <li><button onclick="viewpost('<%=postobj._id%>')"  >view</button></li>
-                        <li><button onclick="report('<%=postobj._id%>')"  >report</button></li>
-                        <li><button onclick="copypostlink('<%=postobj._id%>')"  >copy link</button></li>
-                        <li><button onclick="blockthispostuser('<%=postobj._id%>')"  >block</button></li>
-                        <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','false')"  >message</button></li>
-                        <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','True')"  >secret</button></li>
-                    </ul>
-                </div>
-                <div class="post-image">
-                    <img src="../addmie/img/Addmie.png" alt="image" height="400px" width="auto" style="margin: 5px;">
-                </div>
-               
-                <span>
-                    <%-include('likecommentsharesave.ejs',{postid:postobj._id,username:username,likes:postobj.likes})%>
-                </span>
-                <hr>
-                <div class="caption"> 
-                    <%=postobj.caption%> 
-                </div>
+    <section style="height: 100;width: 100%;" class="flex flex_center ">
+        <div class="postbox flex flex_row my-posts-container ">
+            <div class="postbox_left">
+                
+                    <%var menuid='menu'+postobj._id%>
+                    <div class="my-posts-container-header">
+                        <%var link = '/profile'+'/'+postobj.username; %>
+                            <span class="postheader">
+                                <div class="post_profile_picture">
+                                    <img src="../addmie/img/Addmie.png" alt="image" height="30px" width="30px" style="margin: 5px;">
+
+                                </div>
+                                <div style="width: 100%;">
+                                    <a href= <%=link%>>
+                                        <%=postobj.username%>
+                                    </a>
+                                </div>                                                         
+                            </span>                         
+                    </div>
+                    <div class="post-image">
+                        <img src="../addmie/img/Addmie.png" alt="image" height="400px" width="auto" style="margin: 5px;">
+                    </div>
+                   
+                    <span>
+                        <form id='btnform' class="likecommentsharesave">
+        
+                            <%
+                                var likeid='like'+postobj._id,
+                                commentid='comment'+postobj._id,
+                                shareid='share'+postobj._id,
+                                saveid='save'+postobj._id, 
+                                likeidvalue='like'+postobj._id+'value',
+                                commentidvalue='comment'+postobj._id+'value',
+                                shareidvalue='share'+postobj._id+'value',
+                                saveidvalue='save'+postobj._id+'value'; 
+                            %>
+                        <!--      <img src="../addmie/img/">  -->
+                            <button type="button" class="like btn" onclick="like('<%=postobj._id%>')" >       
+                                <i id='<%=likeid%>' class="<%if(postobj.likes.includes(username)){%> fas fa-heart<%}else{%> far fa-heart<%}%>  " ></i>
+                                <div class="likes">
+                                    
+                                    <a href="#likes"><div>likes:</div></a>
+                                    <a href="#likes"><div id="<%=likeidvalue%>"><%=postobj.likes.length%></div></a>
+                                </div>
+                            </button>
+                            <button type="button"   class="comment btn" onclick="comment('<%=postobj._id%>')">
+                                <i id='<%=commentid%>' class="far fa-comment-dots"></i>
+                            </button>
+                    
+                            <button type="button"   class="share btn" onclick="share('<%=postobj._id%>')">
+                                <i id='<%=shareid%>' class="far fa-paper-plane"></i>
+                            </button>
+                            <button type="button"   class="save btn" onclick="save('<%=postobj._id%>')">
+                                <i id='<%=saveid%>' class="far fa-star"></i>
+                            </button>
+                        
+                        </form>
+                    
+                        
+                    </span>
+                    <hr>
+                    <div class="caption"> 
+                        <%=postobj.caption%> 
+                    </div>
+                    
                 
             </div>
-            <div class='my-posts-container' id='<%=postobj._id%>'>
-                <%var menuid='menu'+postobj._id%>
-                <div class="my-posts-container-header">
-                     <%-include('postheader.ejs',{friend:postobj.username,postid:postobj._id});%> 
+            <div class="postbox_right flex flex_row">
+                
+                <div id="likes" class="flex hide" >
+                    <%for(i=0;i< postobj.likes.length;i++ ){
+                        if(postobj.likes[i]!=username){
+                            %>                            
+                                <%var link = '/profile'+'/'+postobj.likes[i]; %>
+                                <span class="flex">
+                                    
+                                        <div style="width: 100px;height: fit-content;" class="flex_center">
+                                            <a href= <%=link%>>
+                                                <%=postobj.likes[i]%>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <button class="connectbutton" onclick="addfriend('<%=postobj.likes[i]%>')" name=<%=postobj.likes[i]%>  > connect </button>
+                                        </div>
+                                
+                                </span>
+                           <%
+                        }
+                    }%>
                 </div>
-                <div class="menu hide" id="<%=menuid%>" >
-                    <ul >
-                        <li><button onclick="viewpost('<%=postobj._id%>')"  >view</button></li>
-                        <li><button onclick="report('<%=postobj._id%>')"  >report</button></li>
-                        <li><button onclick="copypostlink('<%=postobj._id%>')"  >copy link</button></li>
-                        <li><button onclick="blockthispostuser('<%=postobj._id%>')"  >block</button></li>
-                        <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','false')"  >message</button></li>
-                        <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','True')"  >secret</button></li>
-                    </ul>
+                <div id="comments" class="flex" >
+                    <div id='newcomment' class="flex">                        
+                        <div class="flex flex_column flex_center">
+                            <div class="post_profile_picture">
+                                <img src="../addmie/img/Addmie.png" alt="image" height="30px" width="30px" style="margin: 5px;">
+
+                            </div>
+                            <h3 class="flex flex_column">
+                                <a href= <%=link%>>
+                                    <%=postobj.username%>
+                                </a>
+                            </h3>                                                                                 
+                        </div>
+                        <span class="flex likecommentsharesave flex_center">
+                            <textarea  placeholder="comment..." style="resize: none; width: 100%;height: 30%;;border: none;outline: none;" rows="5">
+
+                            </textarea>
+                            <button>
+                                comment
+                            </button>
+                        </span>
+                    </div>
+                    <div class="flex flex_center">
+                        <span class="flex likecommentsharesave">
+                            <div class="flex flex_column flex_center">
+                                <div class="post_profile_picture">
+                                    <img src="../addmie/img/Addmie.png" alt="image" height="30px" width="30px" style="margin: 5px;">
+
+                                </div>
+                                <h3 class="flex flex_column">
+                                    <a href= <%=link%>>
+                                        <%=postobj.username%>
+                                    </a>
+                                    <button>reply</button>
+                                </h3>                                                                                 
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique enim, nostrum sit quaerat quasi rerum vero quo tempore, totam repellat veniam consequuntur aut? Dolorem quae debitis, recusandae ipsa culpa blanditiis.
+
+                            </p>
+                            
+                            <div>
+                                <button type="button" class="like btn" onclick="like('<%=postobj._id%>')" >       
+                                    <i id='<%=likeid%>' class="<%if(postobj.likes.includes(username)){%> fas fa-heart<%}else{%> far fa-heart<%}%>  " ></i>
+                                    <div class="likes">                    
+                                        <a href="#likes"><div id="<%=likeidvalue%>"><%=postobj.likes.length%></div></a>
+                                    </div>
+                                </button>
+                            </span>
+                        </span>
+                    </div>
+                    
                 </div>
-                <div class="post-image">
-                    <img src="../addmie/img/Addmie.png" alt="image" height="400px" width="auto" style="margin: 5px;">
-                </div>
-               
-                <span>
-                    <%-include('likecommentsharesave.ejs',{postid:postobj._id,username:username,likes:postobj.likes})%>
-                </span>
-                <hr>
-                <div class="caption"> 
-                    <%=postobj.caption%> 
-                </div>
+                <%-include('comment.ejs',{})%>
                 
             </div>
+                
+            </div>
+            
         </div>
     </section>
 </body>
