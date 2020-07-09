@@ -10,7 +10,7 @@
 body,html{
     height: 100%;
     width: 100%;
-    overflow-: hidden;
+    
 }
 .button {
     position: relative;
@@ -115,6 +115,12 @@ nav{
 #containerbar{
     width: 100%;   
 }
+#containerbar h1,#containerbar h2{
+    width: 100%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 100;
+    text-align: center;
+}
 #containerbar p{
     font-size: 16px;
     text-align: left;
@@ -191,7 +197,7 @@ nav{
     justify-content: space-around;
     align-items: center;
 }
-.profileoptions button{
+.profileoptions button ,.profileoptions a{
     background-color: #00b9ed;
     outline: none;
     border: none;
@@ -201,6 +207,7 @@ nav{
     margin: 5px;
     font-size: 16px;
     color: white;
+    text-align: center;
 }
 
 .postform form{
@@ -232,16 +239,21 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
 .myprofilepostselect{
     justify-content: space-evenly;
 }
-.myprofilepostselect div{
-    border: 1px solid black;
-    font-size: 3em;
+.myprofilepostselect div {
+    background-color: #00b9ed;
+    border-bottom: 1px solid black;
     width: 100%;
     text-align: center;
+    
+}
+.myprofilepostselect div a{
+    
+    font-size: 3em;    
     text-transform: capitalize;
     
 }
-.myprofilepostselect div i{
-    font-size: 1em;    
+.myprofilepostselect div a i{
+    font-size: 0.9em;    
 }
 .post-container{
     text-align: center;
@@ -326,6 +338,12 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
     color:red
 }
 .likecommentsharesave .like  .far{
+    color: black;
+}
+.likecommentsharesave .save .fas{
+    color:gold
+}
+.likecommentsharesave .save  .far{
     color: black;
 }
 .post_profile_picture{
@@ -439,3 +457,17 @@ body > div.grid-container > div.grid-container-right > div.postform > form > inp
 .fa-toggle-off{
     color: gray;
 }
+#profilemenu{
+    width: 100%;    
+}
+#profilemenu .menu{
+    background-color: white;
+    text-align: center;
+}
+#profilemenu div{
+    margin: 0px;
+}
+#myposts.hide:target {display:block;}
+#newpost.hide:target {display:block;}
+#savedposts.hide:target {display:block;}
+#changepassword.hide:target {display:block;}

@@ -30,9 +30,13 @@
                     <h1>likes</h1>          
                 </div>
                 <div class="flex container">
-                    <h2>0</h2>
-                    <h2>0</h2>
-                    <h2>0</h2>
+                    <h2>tbu</h2>
+                    <h2><%=postobj.length%></h2>
+                    <%
+                    var sum=0;
+                    for(i=0;i< postobj.length;i++){sum+=postobj[i].likes.length;}
+                    %>
+                    <h2><%=sum%></h2>
                 </div>
                 <p id='bio'>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt aliquid voluptatibus fugiat non itaque reprehenderit, voluptas vero quam tempore ad consectetur repellat illo hic architecto, voluptatum, dicta vel iure quia. Cumque, impedit, amet laudantium earum at modi quos error quibusdam sunt aut alias velit exercitationem dolorum fugiat odit dolorem accusamus perspiciatis. Enim eos consequatur adipisci dolorem optio placeat quas facilis reprehenderit sequi architecto ipsam, culpa cum, odit aliquid corrupti voluptates obcaecati eius necessitatibus iste doloremque? Laboriosam aliquid minus at alias numquam, temporibus eius eveniet vitae omnis repellat error cumque assumenda corrupti impedit adipisci. Eos at quae, saepe repudiandae atque non?
@@ -49,32 +53,61 @@
             
         </div>
         <div class="grid-container-right">
-            <div class="postform">
-                <form  method="POST" action=<%=postlink%> >
-                    <input type='text' name='text' placeholder='caption'/>
-                    <input id='post' type='submit' name='post' value='Post'/>
-                </form>
-            </div>
-            <div class="flex flex_row myprofilepostselect">
-                <div>myposts
-                    <i class="fas fa-portrait"></i>
+           
+            <div class="flex flex_center myprofilepostselect" >
+                <div style="border-bottom-left-radius: 50px;">
+                    <a href="#myposts">
+                        myposts
+                        <i class="fas fa-portrait"></i>
+                    </a>
                 </div>
-                <div>newpost
-                    <i class="far fa-plus-square"></i>
+                <div>
+                    <a href="#newpost">
+                        newpost
+                        <i class="far fa-plus-square"></i>
+                    </a>
                 </div>
-                <div>saved
-                    <i class="far fa-bookmark"></i>
+                <div style="border-bottom-right-radius: 50px;">
+                    <a href="#savedposts">
+                        saved
+                        <i class="far fa-bookmark"></i>
+                    </a>
                 </div>
             </div>
-            <div class="post-container">
-                <h1>your posts</h1>
-                <ul>
-                    <%for(i=0;i< postobj.length;i++){%>
-                        <li><%-include('mypostcontainer.ejs',{postobj:postobj[i],username:userobj.username});%></li>
-                    <%}%>
-                </ul>
-                
-            </div>
+            
+            <section id='myposts' class="hide">
+                <div class="post-container">
+                    <h1>your posts</h1>
+                    <ul>
+                        <%for(i=0;i< postobj.length;i++){%>
+                            <li><%-include('mypostcontainer.ejs',{postobj:postobj[i],username:userobj.username});%></li>
+                        <%}%>
+                    </ul>
+                    
+                </div>
+            </section>
+            <section id='newpost' class="hide">
+                <div class="postform">
+                    <form  method="POST" action=<%=postlink%> >
+                        <input type='text' name='text' placeholder='caption'/>
+                        <input id='post' type='submit' name='post' value='Post'/>
+                    </form>
+                </div>
+            </section>
+            <section id='savedposts' class="hide">
+                <div class="post-container">
+                    <h1>saved posts</h1>
+                    <ul>
+                        <%for(i=0;i< saved.length;i++){%>
+                            <li><%-include('saved.ejs',{postobj:saved[i],username:userobj.username});%></li>
+                            
+                        <%}%>
+                    </ul>
+                    
+                </div>
+            </section>
+            
+            
         </div>
     </div>
 </body>

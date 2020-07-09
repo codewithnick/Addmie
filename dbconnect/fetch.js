@@ -1,6 +1,7 @@
 
 var result=null;
 var posts=null;
+var saved =null;
 module.exports = async function dbconnect(from,res,client)
 {   
        try {
@@ -10,6 +11,7 @@ module.exports = async function dbconnect(from,res,client)
         // Make the appropriate DB calls
         result=await client.db('profile').collection('user').findOne({username:from});
         posts=await client.db('profile').collection('post').find({username:from}).sort('creationdate',-1).toArray();
+        saved=await client.db('profile').collection('post').find({saves:from}).sort('creationdate',-1).toArray();
         //console.log(result);
         //console.log(posts);
     } catch (e) {
@@ -19,8 +21,8 @@ module.exports = async function dbconnect(from,res,client)
     } finally {
         console.log('closing client connection');
         //await client.close();
-        //console.log(posts);
-        await res.render('myprofile.ejs',{userobj:result,postobj:posts});
+        //console.log(saved);
+        await res.render('myprofile.ejs',{userobj:result,postobj:posts,saved:saved});
     }
 
 }

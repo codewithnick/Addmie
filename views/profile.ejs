@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 <body>
-    <%- include('header.ejs',({username:userobj.username}))%>
+    <%- include('header.ejs',({username:username}))%>
     <%var postlink="/"+userobj.username+"/sendpost"; %>
     <div class="flex grid-container">
         <div class="flex grid-container-left ">
@@ -24,36 +24,51 @@
                 <div id="username"><a href=><%=userobj.username%></a></div>
                 
             </div>
+            
             <div class="flex flex_column flex_center" id="containerbar">
+                
                 <div class="flex container">
-                    <h1>fans</h1>  
+                    <h1>following</h1>  
                     <h1>posts</h1>
                     <h1>likes</h1>          
                 </div>
                 <div class="flex container">
-                    <h2>0</h2>
-                    <h2>0</h2>
-                    <h2>0</h2>
+                    <h2><%=userobj.friends.length%></h2>
+                    <h2><%=postobj.length%></h2>
+                    <%
+                    var sum=0;
+                    for(i=0;i< postobj.length;i++){sum+=postobj[i].likes.length;}
+                    %>
+                    <h2><%=sum%></h2>
                 </div>
                 <p id="bio">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt aliquid voluptatibus fugiat non itaque reprehenderit, voluptas vero quam tempore ad consectetur repellat illo hic architecto, voluptatum, dicta vel iure quia. Cumque, impedit, amet laudantium earum at modi quos error quibusdam sunt aut alias velit exercitationem dolorum fugiat odit dolorem accusamus perspiciatis. Enim eos consequatur adipisci dolorem optio placeat quas facilis reprehenderit sequi architecto ipsam, culpa cum, odit aliquid corrupti voluptates obcaecati eius necessitatibus iste doloremque? Laboriosam aliquid minus at alias numquam, temporibus eius eveniet vitae omnis repellat error cumque assumenda corrupti impedit adipisci. Eos at quae, saepe repudiandae atque non?
                 </p>
-                <div class='profileoptions flex'>                    
-                    <button>
+                
+                <div class='profileoptions flex'>
+                    <%if(myfriends.includes(userobj.username)){%>
+                    <button onclick="removefriend('<%=userobj.username%>')">
+                        unfollow
+                    </button >  
+                    <%}                    
+                    else{%>
+                    <button onclick="addfriend('<%=userobj.username%>')">
                         follow
-                    </button>                    
-                    <button>
+                    </button >                    
+                    <%}%>
+                    <%var messagelink='/'+username+'/direct/new/'+userobj.username%>
+                    <a href="<%=messagelink%>">
                         message
-                    </button>
-                    <button>
+                    </a>
+                    <a href="<%=messagelink +'?&secret=True'%>">
                         secret
-                    </button>
+                    </a>
                 </div>
                
             </div>
             <div class="headerbuttons flex flex_center" style="width: 10%;">
                 
-                <button class='doted' style="background-color: transparent;outline: none;border: none;">
+                <button onclick="hide('profilemenu')" class='doted' style="background-color: transparent;outline: none;border: none;">
                     <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                         </svg>
@@ -62,12 +77,22 @@
             </div>
             
         </div>
+        <div  id="profilemenu" class="flex flex_center hide">
+            <div class="menu"  >
+                <ul>                    
+                    <li><button onclick="reportuser('<%=userobj.username%>')"  >report</button></li>
+                    <li><button onclick="copyuserlink('<%=userobj.username%>')"  >copy link</button></li>
+                    <li><button onclick="blockthisuser('<%=userobj.username%>')"  >block</button></li>
+                    
+                </ul>
+            </div>
+        </div>   
         <div class="grid-container-right" >
             
             
-            <div class="post-container" style="height: 100%;">
-                <h1>your posts</h1>
+            <div class="post-container" style="height: 100%;">                
                 <ul>
+                    
                     <%for(i=0;i< postobj.length;i++){%>
                         <li><%-include('postcontainer.ejs',{postobj:postobj[i],username:username});%></li>
                         
@@ -76,6 +101,7 @@
                 
             </div>
         </div>
+        
     </div>
 </body>
 </html>

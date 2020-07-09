@@ -175,7 +175,15 @@ module.exports=function(app){
         //console.log(req.query)
         //console.log(req.url)
         let query=require('../dbconnect/addfriend.js');
-        query(req.session.username,req.query.text,client);
+        query(req,client);
+        res.end('success');
+     });
+                            /////////////////// removing a new friend ////////////////////////////
+     app.get('/ajax/removefriend',loginauth,function(req,res){
+        //console.log(req.query)
+        //console.log(req.url)
+        let query=require('../dbconnect/removefriend.js');
+        query(req,client);
         res.end('success');
      });
                 ////////////////////////////////////messages dealings///////////////////////////
@@ -208,6 +216,11 @@ module.exports=function(app){
         console.log(req.body)
         query(req,res,client);        
         });
+         ////////////////////////liking a post//////////////////
+     app.post('/ajax/save',bodyparserencoder,loginauth,function(req,res){
+        let query=require('../dbconnect/savepost.js');        
+        query(req,res,client);        
+     });
                             //////////////////////// removing a post //////////////
      app.get('/ajax/removepost',loginauth,function(req,res){
         let query=require('../dbconnect/removepost.js');

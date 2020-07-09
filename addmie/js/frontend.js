@@ -8,7 +8,7 @@ function like(id){
 }
 function comment(id){
   const element=document.getElementById('comment'+id);
-  
+  window.location.href='/post?&id='+id+'#comments'
 }
 function share(id){
   const element=document.getElementById('share'+id);
@@ -19,6 +19,7 @@ function save(id){
   element.classList.toggle('fas')
   element.classList.toggle('far')
   element.classList.toggle('gold')
+  saved(id);
 }
 function dot(id)
 {

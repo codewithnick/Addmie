@@ -16,7 +16,9 @@ let today = new Date();
             likes:[]
         }
         var result =await client.db('profile').collection('comment').insertOne(commentobject);
-        
+        result=await client.db('profile').collection('post').updateOne(
+            {_id:mongodb.ObjectId(req.body.postid)},{$push:{comments:req.session.username}}
+            );
 
     } catch (e) {
     } 

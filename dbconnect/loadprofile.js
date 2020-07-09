@@ -9,8 +9,10 @@ module.exports = async function dbconnect(req,res,client)
         console.log('client connected sucessfully');
         // Make the appropriate DB calls
         result=await client.db('profile').collection('user').findOne({username:req.params.username});
+        myfriends=await client.db('profile').collection('user').findOne({username:req.session.username});
         posts=await client.db('profile').collection('post').find({username:req.params.username}).toArray();
-        //console.log(result);
+        fans=await client.db('profile').collection('user').find({friends:req.params.username}).toArray();
+        console.log(fans);
         //console.log(posts);
     } catch (e) {
         console.log('error connecting to db');
@@ -19,8 +21,8 @@ module.exports = async function dbconnect(req,res,client)
     } finally {
         console.log('closing client connection');
         //await client.close();
-        //console.log(posts);
-        await res.render('profile.ejs',{userobj:result,postobj:posts,username:req.session.username});
+        //console.log(myfriends);
+        await res.render('profile.ejs',{userobj:result,postobj:posts,username:req.session.username,myfriends:myfriends.friends});
     }
 
 }

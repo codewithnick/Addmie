@@ -1,0 +1,35 @@
+<!-- <div class='my-posts-container' id='<%=postobj._id%>'>
+    <%var menuid='menu'+postobj._id%>
+    <div class="my-posts-container-header">
+        <%var link = '/profile'+'/'+postobj.username; %>
+            <span class="postheader">
+                <div class="post_profile_picture">
+                    <img src="../addmie/img/Addmie.png" alt="image" height="30px" width="30px" style="margin: 5px;">
+
+                </div>
+                <div style="width: 100%;">
+                    <a href= <%=link%>>
+                        <%=postobj.username%>
+                    </a>
+                </div>                                                         
+            </span>                         
+    </div>
+    <div class="menu hide" id="<%=menuid%>" >
+        <ul >
+            <li><button onclick="viewpost('<%=postobj._id%>')"  >view</button></li>            
+            <li><button onclick="copypostlink('<%=postobj._id%>')"  >copy link</button></li>
+        </ul>
+    </div>
+    <div class="post-image">
+        <img src="../addmie/img/Addmie.png" alt="image" height="400px" width="auto" style="margin: 5px;">
+    </div>
+   
+    <span>
+        <%-include('likecommentsharesave.ejs',{postid:postobj._id,username:username,likes:postobj.likes})%>
+    </span>
+    <hr>
+    <div class="caption"> 
+        <%=postobj.caption%> 
+    </div>
+    
+</div> -->

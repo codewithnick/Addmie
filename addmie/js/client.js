@@ -6,7 +6,15 @@ function addfriend(friendname){
         data :{text:friendname},
         contentType :"text"
     })
-
+    location.reload();
+}
+function removefriend(friendname){
+    $.ajax({
+        url:'/ajax/removefriend',
+        data :{text:friendname},
+        contentType :"text"
+    })
+    location.reload();
 }
 function removeElement(elementId) {
     // Removes an element from the document
@@ -17,6 +25,10 @@ function liked(id){
     
     var jqxhr =$.post( "/ajax/like", { id:id} , (object)=>{    });
 }
+function saved(id){
+    
+    var jqxhr =$.post( "/ajax/save", { id:id} , (object)=>{    });
+}
 function viewpost(id){
     hide('menu'+id);
     window.location.href='/post?&id='+id;
@@ -25,8 +37,15 @@ function report(id){
     hide('menu'+id);
     window.location.href='/report'
 }
+function reportuser(id){
+    hide('profilemenu');
+    window.location.href='/report'
+}
 function copypostlink(id){
     hide('menu'+id);
+}
+function copyuserlink(id){
+    hide('profilemenu');
 }
 function editthispost(id){
     hide('menu'+id);
@@ -48,6 +67,9 @@ function removepost(id){
 }
 function blockthispostuser(id){
     hide('menu'+id);
+}
+function blockthisuser(id){
+    hide('profilemenu');
 }
 function messagethispostuser(id,username,friend,secret){
     hide('menu'+id);

@@ -34,29 +34,30 @@
             <span>
                 <a href="<%=commentlink%>" class="flex">
                     <div>comments:</div>
-                    <div id="<%=commentidvalue%>"><%=postobj.likes.length%></div>
+                    <div id="<%=commentidvalue%>"><%=postobj.comments.length%></div>
                 </a>
             </span>
         </div>
         <div class="flex flex_column flex_center">
-            <button type="button"   class="share btn" onclick="share('<%=postobj.postid%>')">
+            <button type="button"   class="share btn" onclick="share('<%=postobj._id%>')">
                 <i id='<%=shareid%>' class="far fa-paper-plane"></i>
             </button>
             <span>
                 <a href="<%=sharelink%>" class="flex">
                     <div>shares:</div>
-                    <div id="<%=shareidvalue%>"><%=postobj.likes.length%></div>
+                    <div id="<%=shareidvalue%>"><%=postobj.shares.length%></div>
                 </a>
             </span>
         </div>
         <div class="flex flex_column flex_center">
-            <button type="button"   class="save btn" onclick="save('<%=postobj.postid%>')">
-                <i id='<%=saveid%>' class="far fa-star"></i>
+            <button type="button"   class="save btn" onclick="save('<%=postobj._id%>')">
+                <i id='<%=saveid%>'
+                    class="<%if(postobj.saves.includes(username)){%> fas fa-star<%}else{%> far fa-star<%}%>  " ></i>
             </button>
             <span>
                 <a href="<%=savelink%>" class="flex">
                     <div>saves:</div>
-                    <div id="<%=saveidvalue%>"><%=postobj.likes.length%></div>
+                    <div id="<%=saveidvalue%>"><%=postobj.saves.length%></div>
                 </a>
             </span>
         </div>    
