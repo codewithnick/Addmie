@@ -49,6 +49,7 @@
                 </a>
             </span>
         </div>
+        <%if(postobj.username!=username){%>
         <div class="flex flex_column flex_center">
             <button type="button"   class="save btn" onclick="save('<%=postobj._id%>')">
                 <i id='<%=saveid%>'
@@ -61,4 +62,5 @@
                 </a>
             </span>
         </div>    
+        <%}%>
     </form>

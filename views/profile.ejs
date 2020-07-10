@@ -28,12 +28,12 @@
             <div class="flex flex_column flex_center" id="containerbar">
                 
                 <div class="flex container">
-                    <h1>following</h1>  
+                    <h1>fans</h1>  
                     <h1>posts</h1>
                     <h1>likes</h1>          
                 </div>
                 <div class="flex container">
-                    <h2><%=userobj.friends.length%></h2>
+                    <h2><%=userobj.fans%></h2>
                     <h2><%=postobj.length%></h2>
                     <%
                     var sum=0;
@@ -60,9 +60,11 @@
                     <a href="<%=messagelink%>">
                         message
                     </a>
+                    <%if(userobj.secret){%>
                     <a href="<%=messagelink +'?&secret=True'%>">
                         secret
                     </a>
+                    <%}%>
                 </div>
                
             </div>

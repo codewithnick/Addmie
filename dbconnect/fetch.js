@@ -12,6 +12,8 @@ module.exports = async function dbconnect(from,res,client)
         result=await client.db('profile').collection('user').findOne({username:from});
         posts=await client.db('profile').collection('post').find({username:from}).sort('creationdate',-1).toArray();
         saved=await client.db('profile').collection('post').find({saves:from}).sort('creationdate',-1).toArray();
+        fans=await client.db('profile').collection('user').countDocuments({friends:from});
+        result.fans=fans
         //console.log(result);
         //console.log(posts);
     } catch (e) {

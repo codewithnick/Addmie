@@ -30,7 +30,7 @@
                     <h1>likes</h1>          
                 </div>
                 <div class="flex container">
-                    <h2>tbu</h2>
+                    <h2><%=userobj.fans%></h2>
                     <h2><%=postobj.length%></h2>
                     <%
                     var sum=0;
@@ -99,7 +99,7 @@
                     <h1>saved posts</h1>
                     <ul>
                         <%for(i=0;i< saved.length;i++){%>
-                            <li><%-include('saved.ejs',{postobj:saved[i],username:userobj.username});%></li>
+                            <li><%-include('postcontainer.ejs',{postobj:saved[i],username:userobj.username});%></li>
                             
                         <%}%>
                     </ul>

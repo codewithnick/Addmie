@@ -20,7 +20,7 @@
     <div class="flex flex_center">
         <div class="settings_container">
             <form method="POST" action="<%=update%>">
-                <div>
+                <div >
                     <label>firstname</label>
                     <input type="text" value="<%=settingsobj.fname%>" name="fname"/>
                 </div>            
@@ -102,12 +102,13 @@
                        
                 </div>
 
-                <div>
-                    <div class="flex hide" id="changepassword">
-                        <form >
-                            <textarea></textarea>
+                <div>                    
+                        <form class=" hide" id="changepassword">
+                            <input type="text" placeholder="old password"/>
+                            <input type="text" name="" id="newpassword" placeholder="newpassword"/>
+                            <input type="submit" value="change"/>
                         </form>
-                    </div>
+                   
                 </div>
                 <div>
                     <a href="/logout">Logout</a>
