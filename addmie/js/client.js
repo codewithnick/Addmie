@@ -67,9 +67,14 @@ function removepost(id){
 }
 function blockthispostuser(id){
     hide('menu'+id);
+    
 }
 function blockthisuser(id){
     hide('profilemenu');
+    $.post( "/ajax/blockuser", {blockthisuserid:id} , (object)=>{
+
+    });
+
 }
 function messagethispostuser(id,username,friend,secret){
     hide('menu'+id);

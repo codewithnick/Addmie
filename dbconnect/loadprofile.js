@@ -23,6 +23,13 @@ module.exports = async function dbconnect(req,res,client)
         //await client.close();
         //console.log(myfriends);
         result.fans=fans
+        
+        
+    }
+    if(result.blockedby.includes(req.session.username)){
+        await res.render('blockedaccount.ejs')
+    }
+    else{
         await res.render('profile.ejs',{userobj:result,postobj:posts,username:req.session.username,myfriends:myfriends.friends});
     }
 

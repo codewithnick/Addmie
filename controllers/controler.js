@@ -27,7 +27,6 @@ const restrictionauth=(req,res,next)=>{
             console.log('this page is restricted');
         }
 };
-
 bodyparserencoder = bodyparserencoder.urlencoded({ extended: true })
 module.exports=function(app){
     app.get('/',function(req,res){
@@ -72,7 +71,7 @@ module.exports=function(app){
         }
     });
     ////////to view others account///////////
-    app.get('/profile/:username',loginauth,function(req,res){
+    app.get('/profile/:username',loginauth,function(req,res){//#block applied
         if(req.session.username==req.params.username){
             console.log('oops wrong url')
             res.redirect('/'+req.session.username+'/profile')
@@ -117,7 +116,7 @@ module.exports=function(app){
         res.redirect('/'+req.session.username+'/profile');
     });
     /////////////////////////////////////////home section\feed section////////////////////////////////
-    app.get('/:username/home',loginauth,restrictionauth,function(req,res){
+    app.get('/:username/home',loginauth,restrictionauth,function(req,res){//#block applied
         console.log('request for home feed');
         let query =require('../dbconnect/homepage.js');
         query(req.session.username,res,client);
@@ -145,7 +144,7 @@ module.exports=function(app){
 
 
 
-     app.get('/:username/direct/new/:friendname',loginauth,restrictionauth,function(req,res){
+     app.get('/:username/direct/new/:friendname',loginauth,restrictionauth,function(req,res){//#block applied
         let query =require('../dbconnect/sendnewmessage.js');
         //console.log(req.query.secret)
         query(req.session.username,req,res,client,req.params.friendname);
@@ -237,7 +236,14 @@ module.exports=function(app){
     
 
 
-
+                /////////////////////////////////// BLOCKS //////////////////////////////
+                        //////////////////////// blocking user ///////////////////
+                
+    app.post('/ajax/blockuser',bodyparserencoder,loginauth,function(req,res){
+        let query=require('../dbconnect/addblock.js');
+        query(req,res,client);
+        //console.log(req.body)
+        });
 
     app.get('/report',function(req,res){
         res.send('this feature is not yet updated')
