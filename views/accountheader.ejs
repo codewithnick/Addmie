@@ -2,22 +2,18 @@
 <%var link = '/profile'+'/'+friend; %>
 <%var chat = '/' + username+'/direct/new/'+friend; %>
 <%var anychat = '/' + username+'/direct/new/'+friend+'?secret=True'; %>
-<span>
-    <div style="width: 100px;">
-        <a href= <%=link%>>
+<span class="flex flex_center">
+    <div class="post_profile_picture">
+        <img src="../addmie/img/Addmie.png" alt="image" height="30px" width="30px" style="margin: 5px;">
+
+    </div>
+    <div style="width: 100px;">        
+        <a style="font-size: 16px;" href= <%=link%> >
             <%=friend%>
 
         </a>
+        
     </div>
-    <div>
-        <a href="<%=anychat%>">
-            <i class="fas fa-user-secret"></i>
-        </a>
-    </div>
-    <div>
-        <a href="<%=chat%>">
-            <i class="fas fa-plus"></i> chat
-        </a>
-    </div>
+    
     
 </span>

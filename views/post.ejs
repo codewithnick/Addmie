@@ -48,27 +48,13 @@
             <div class="postbox_right flex flex_row">
                 
                 <div id="likes" class="flex hide" >
-                    <%for(i=0;i< postobj.likes.length;i++ ){
-                        if(postobj.likes[i]!=username){
-                            %>                            
-                                <%var link = '/profile'+'/'+postobj.likes[i]; %>
-                                <span class="flex">
-                                    
-                                        <div style="width: 100px;height: fit-content;" class="flex_center">
-                                            <a href= <%=link%>>
-                                                <%=postobj.likes[i]%>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <button class="connectbutton" onclick="addfriend('<%=postobj.likes[i]%>')" name=<%=postobj.likes[i]%>  > connect </button>
-                                        </div>
-                                
-                                </span>
-                           <%
-                        }
-                    }%>
+                    <h1>likes</h1>
+                    <% for(i=0; i< postobj.likes.length ; i++ ){  %>                                             
+                        <span><%-include('accountheader.ejs',{friend:postobj.likes[i]})%></span>
+                    <%}%>
                 </div>
                 <div id="comments" class="flex hide" >
+                    
                     <div id='newcomment' class="flex">                        
                         <div class="flex flex_column flex_center">
                             <div class="post_profile_picture">
@@ -94,6 +80,19 @@
                     <div class="flex flex_center"><%-include('comment.ejs',{comment:comments[i]})%></div>
                     <%}%>
                 </div>
+                <div id="shares" class="flex hide" >
+                    <h1>shares</h1>
+                    <% for(i=0; i< postobj.shares.length ; i++ ){  %>                                             
+                        <span><%-include('accountheader.ejs',{friend:postobj.shares[i]})%></span>
+                    <%}%>
+                </div>
+                <div id="saves" class="flex hide" >
+                    <h1>saves</h1>
+                    <% for(i=0; i< postobj.saves.length ; i++ ){  %>                                             
+                        <span><%-include('accountheader.ejs',{friend:postobj.saves[i]})%></span>
+                    <%}%>
+                </div>
+                
                 
                 
             </div>

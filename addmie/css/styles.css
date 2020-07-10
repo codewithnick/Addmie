@@ -12,6 +12,9 @@ body,html{
     width: 100%;
     
 }
+i ,a{
+    color: #993299;
+}
 .button {
     position: relative;
     background-color: #4CAF50;
@@ -299,7 +302,9 @@ nav{
 }
 .likecommentsharesave button i{
     font-size: 1.5em;
+    color: black;
 }
+
 .likecommentsharesave a{
     text-decoration: none;
     color: lightslategray;

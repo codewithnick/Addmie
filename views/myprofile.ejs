@@ -11,7 +11,7 @@
 </head>
 <body>
     <%- include('header.ejs',({username:userobj.username}))%>
-    <%var postlink="/"+userobj.username+"/sendpost"; %>
+    
     <div class="flex grid-container">
         <div class="flex grid-container-left">
             <div class="flex profile">
@@ -87,12 +87,8 @@
                 </div>
             </section>
             <section id='newpost' class="hide">
-                <div class="postform">
-                    <form  method="POST" action=<%=postlink%> >
-                        <input type='text' name='text' placeholder='caption'/>
-                        <input id='post' type='submit' name='post' value='Post'/>
-                    </form>
-                </div>
+                <%-include('newpost.ejs',{userobj:userobj})%>
+                
             </section>
             <section id='savedposts' class="hide">
                 <div class="post-container">
