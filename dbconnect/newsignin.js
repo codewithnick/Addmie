@@ -26,7 +26,8 @@ module.exports=async function main(username,password,fname,lname,dob,email,gende
         friends: [],
         gender:gender,
         city:city.toLowerCase(),
-        blockedby:[]
+        blockedby:[],
+        blocks:[]
     };
         try {
         // Connect to the MongoDB cluster

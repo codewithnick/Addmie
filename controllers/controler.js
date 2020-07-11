@@ -1,5 +1,20 @@
 let path=require('path');
+let fs=require('fs');
 let bodyparserencoder=require('body-parser');
+//preparing multer for file uploads
+const multer=require('multer');
+var storage=multer.diskStorage(
+    {
+        destination:function(req,file,cb){
+            cb(null,'addmie/post');
+        },
+        filename:function(req,file,cb){
+            cb(null,file.fieldname+'-'+Date.now()+path.extname(file.originalname));
+        },
+    },
+    console.log('disk')
+);
+var upload =multer({storage:storage});
 //connecting to db client 
 let dbconnect=require('../dbconnect/connect');
 const MongoClient=dbconnect.MongoClient;
@@ -53,6 +68,27 @@ module.exports=function(app){
         exists=query.login({username:req.body.Username,password:req.body.Password},res,req);       
         //move to profile page directly
     });
+    /////////////////////////////////////////////// session pages ////////////////////////////////////////  
+    //request handling when logout is requested
+    app.get('/logout',loginauth,function(req,res){
+        //console.log(req.session);
+        if(req.session.loggedIn){
+        req.session.destroy();       
+        }
+        else{
+            console.log('login to continue');
+        }
+        res.redirect('/');
+        
+    });
+
+    //request handling fro post view
+    app.get('/post',loginauth,function(req,res){//#block applied
+        console.log(req.query.id);
+        var query=require('../dbconnect/loadpost');
+        query(req,res,client);
+
+    });
     //////////own account login///////////
     app.get('/:username/profile',loginauth,restrictionauth,function(req,res){
         if(req.params.username==req.session.username){
@@ -86,33 +122,22 @@ module.exports=function(app){
         }
         
     });
-    /////////////////////////////////////////////// session pages ////////////////////////////////////////  
-    //request handling when logout is requested
-    app.get('/logout',loginauth,function(req,res){
-        //console.log(req.session);
-        if(req.session.loggedIn){
-        req.session.destroy();       
-        }
-        else{
-            console.log('login to continue');
-        }
-        res.redirect('/');
-        
-    });
-
-    //request handling fro post view
-    app.get('/post',loginauth,function(req,res){
-        console.log(req.query.id);
-        var query=require('../dbconnect/loadpost');
-        query(req,res,client);
-
-    });
+    
 
     //request handling when user posts
-    app.post('/:username/sendpost',bodyparserencoder,loginauth,restrictionauth,function(req,res){
+    app.post('/:username/sendpost',upload.single('newimage'),bodyparserencoder,loginauth,restrictionauth,function(req,res){
         console.log('post has been recived');
+        var img =fs.readFileSync(req.file.path)
+        var encode_img=img.toString('base64');
+        //make a new image object
+        var finalimg={
+            contentType:req.file.mimetype,
+            path:req.file.path,
+            image:new Buffer.from(encode_img,'base64')
+        };
+        //console.log(finalimg)
         var query=require('../dbconnect/insertpost');
-        query(req,client);
+        query(req,finalimg,client);
         res.redirect('/'+req.session.username+'/profile');
     });
     /////////////////////////////////////////home section\feed section////////////////////////////////
@@ -240,8 +265,13 @@ module.exports=function(app){
                         //////////////////////// blocking user ///////////////////
                 
     app.post('/ajax/blockuser',bodyparserencoder,loginauth,function(req,res){
-        let query=require('../dbconnect/addblock.js');
-        query(req,res,client);
+        let query=require('../dbconnect/block.js');
+        query.blockuser(req,res,client);
+        //console.log(req.body)
+        });
+    app.post('/ajax/unblockuser',bodyparserencoder,loginauth,function(req,res){
+        let query=require('../dbconnect/block.js');
+        query.unblockuser(req,res,client);
         //console.log(req.body)
         });
 

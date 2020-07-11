@@ -4,25 +4,16 @@
     <div id='newpostform' class='my-posts-container' >
         
         
-            <div class="post-image" >
-               <button style="height: 400px; width: 400px;" id="newpostimage" >
-                    <i class="far fa-plus-square" style="font-size: 10em;color: black;"></i>
-               </button>
+            <form class="flex flex_column" method="POST" enctype="multipart/form-data" action="<%=postlink%>">
 
-            </div>
+                    <i class="far fa-plus-square" >
+                        <input type="file" name='newimage' accept="image/*" required/>
+                    </i>
+                    <input type="text" placeholder="caption" name="text" required/>
+                    <input type="submit"/>
+               
+            </form>
             
-        
-            
-            
-            <textarea name="newpostcaption" id="newpostcaption" cols="10" rows="5" style="font-size: 16px;resize: none;width: 100%;outline: none;border: none;">
-                caption
-            </textarea>
-            <button style="resize: none;width: 100%;outline: none;border: none;height: 50px; font-size: 18px;" >
-               POST
-            </button>
-   
-       
-
-
+    
     </div>
 </div>
