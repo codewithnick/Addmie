@@ -240,6 +240,7 @@ nav{
     
 }
 .my-posts-container{
+    position: relative;
     background-color: ivory;
     border: 1px solid black;
     box-shadow: grey 2px 2px 2px 2px;
@@ -255,6 +256,7 @@ nav{
     padding: 3px;
 }
 .post-image{
+ 
     overflow: hidden;
 }
 .friends-container a{
@@ -356,7 +358,7 @@ nav{
 
 .menu{
     z-index: 1;
-    position:absolute;
+    position: absolute;;
     margin-left: 135px;
     margin-top: 75px;
     height: fit-content;

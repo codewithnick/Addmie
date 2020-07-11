@@ -71,10 +71,7 @@
     overflow: hidden;
 }
 
-#newpostform textarea{
-    width: 100%;
-    height: 50px;
-}
+
 #likes.hide:target {display:block;}
 #comments.hide:target {display:block;}
 #shares.hide:target {display:block;}

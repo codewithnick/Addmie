@@ -47,9 +47,6 @@ function copypostlink(id){
 function copyuserlink(id){
     hide('profilemenu');
 }
-function editthispost(id){
-    hide('menu'+id);
-}
 function removepost(id){
     hide('menu'+id);
     $.ajax(
@@ -74,7 +71,13 @@ function blockthisuser(id){
     $.post( "/ajax/blockuser", {blockthisuserid:id} , (object)=>{
 
     });
-
+    location.reload()
+}
+function unblockthisuser(id){
+    hide('profilemenu');
+    $.post( "/ajax/unblockuser", {unblockthisuserid:id} , (object)=>{
+    });
+    location.reload()
 }
 function messagethispostuser(id,username,friend,secret){
     hide('menu'+id);
