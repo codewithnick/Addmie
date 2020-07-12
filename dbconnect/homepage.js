@@ -32,7 +32,7 @@ module.exports=async function main(username,res,client){
             )
         .limit(15)
         .toArray();
-        console.log(result)
+        //console.log(result)
     
     } catch (e) {
         console.log('error connecting to db');

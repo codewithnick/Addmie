@@ -89,6 +89,11 @@ module.exports=function(app){
         query(req,res,client);
 
     });
+    ///request handling for search query///
+    app.get('/search',function(req,res){
+        let query=require('../dbconnect/search.js')
+        query(req,res,client);
+    });
     //////////own account login///////////
     app.get('/:username/profile',loginauth,restrictionauth,function(req,res){
         if(req.params.username==req.session.username){

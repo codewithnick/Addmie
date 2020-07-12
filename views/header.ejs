@@ -1,8 +1,8 @@
-<%var profilelink = '/'+username+'/profile',
+<%var profilelink = '/'+username+'/profile#myposts',
 	explorelink='/'+username+'/explore/friends',
 	homelink='/'+username+'/home',
 	messagelink='/'+username+'/direct',
-	settingslink='/'+username+'/settings';
+	searchlink='/search';
  %>
  <nav>
 	<script src="https://kit.fontawesome.com/e4aaa47c6d.js" crossorigin="anonymous"></script>
@@ -20,14 +20,14 @@
 									<li class="headerbuttons">
 										<a  onclick="history.back()" href="">
 											<div>
-												<i style="font-size:2.5em;" class="fas fa-arrow-left"></i>
+												<i style="font-size:2em;" class="fas fa-arrow-left"></i>
 											</div>											
 										</a>
 									</li>
 									<li class="headerbuttons">
-										<a href=<%=settingslink%>>
+										<a href=<%=searchlink%>>
 											<div >
-												<i  style="font-size:2.5em;" class="fas fa-search"></i>
+												<i  style="font-size:2em;" class="fas fa-search"></i>
 											</div>
 										</a>
 									</li>
@@ -43,14 +43,14 @@
 									<li class="headerbuttons">
 										<a href=<%=messagelink%>>
 											<div >
-												<i style="font-size:2.5em;" class="fas fa-feather-alt"></i>
+												<i style="font-size:2em;" class="fas fa-feather-alt"></i>
 											</div>
 										</a>
 									</li>							
 									<li class="headerbuttons">
 										<a href=<%=profilelink%>>
 											<div >
-												<i style="font-size:2.5em;" class="fas fa-user-alt"></i>
+												<i style="font-size:2em;" class="fas fa-user-alt"></i>
 											</div>
 										</a>
 									</li>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" type = "image/png" href = "../addmie/img/Addmie.png"> 
+    <link rel="Stylesheet" href="../addmie/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../addmie/css/gaurav.css">  
+ 
+    <title>Settings</title>
+</head>
+<body>
+    <%-include('header.ejs',{username:username})%>
+   
+    <div class="flex flex_center" >
+        <div class="search_container flex flex_column">
+            
+            <form class="flex flex_center" action="/search">
+                <input type="search" placeholder="username" name="q"/>
+                <input type='submit' value="search"/>
+            </form>
+            <%if(userobj){%>
+                <section class="flex flex_column" style="width: 100%; margin-top: 50px;">
+                        
+                        <div class="flex flex_column flex_center"  style="width: 100%;"> 
+                            <h1>results</h1>
+                            <%for(i=0;i< userobj.length;i++){%>
+                                <section class="flex accountbox flex_center"><%-include('accountheader.ejs',{friend:userobj[i]})%></section>
+                            <%}%>
+                        </div>
+                        <%if(userobj.length==0){%> <h7 class="flex flex_center blurtext">no results to display</h7> <%}%>
+                </section>
+            <%}%>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
