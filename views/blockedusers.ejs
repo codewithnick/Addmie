@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" type = "image/png" href = "../addmie/img/Addmie.png"> 
+    <link rel="Stylesheet" href="../addmie/css/styles.css">
+    <link rel="Stylesheet"  href="../addmie/css/gaurav.css">  
+    <link rel="Stylesheeet" href="../addmie/css/slider.css">
+    <title>Blocked users</title>
+</head>
+<body>
+    <%-include('header.ejs',{username:username})%>
+    <ul>
+        <%for(i=0;i< blocks.length;i++){%>
+        <li style="border-bottom: 1px solid black;margin-top: 5px;">
+            <%-include('accountheader.ejs',{friend:blocks[i]})%>
+        </li>
+        <%}%>
+    </ul>
+</body>
+</html>

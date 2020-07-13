@@ -17,6 +17,7 @@
         notificationsid='notifications'+settingsobj.username,
         update='/'+settingsobj.username+'/updatesettings'
         dp='/'+settingsobj.username+'/updatedp'
+        blocked='/'+settingsobj.username+'/blockedaccounts'
     %>
     <div class="flex flex_center">
         <div class="settings_container">
@@ -121,12 +122,14 @@
                 <div>
                     <a href="/logout">Logout</a>
                 </div>
-                <div>
-                    <a href="#">Blocked accounts</a>
-                </div>
+                
                 <div>
                     <button><a style="color: red;">Delete my account</a></button>
                 </div>
+                <div>
+                    <a href="<%=blocked%>">Blocked accounts</a>
+                </div>
+                
             </section> 
         </div>
     </div>

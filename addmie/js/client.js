@@ -113,6 +113,8 @@ function postcomment(username,postid){
     $.post( "/ajax/newcomment", commentobject , ()=>{
         window.location.href='/post?&id='+postid
     });
+    var value=document.getElementById('comment'+postid+'value')
+    value.textContent=strtoint(value.textContent)+1
 
 }
 

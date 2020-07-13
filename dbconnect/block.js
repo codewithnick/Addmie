@@ -60,3 +60,20 @@ module.exports.unblockuser=async function unblock(req,res,client){
     res.end('blocked')
     
 }
+module.exports.loadblockedaccounts=async function loadblockedaccounts(req,res,client){
+    try {        
+        //first remove from blockedby array and blocks array ///
+        var result=await client.db('profile').collection('user').findOne({username:req.session.username})
+
+
+            
+        
+        //remove my saved posts
+            
+        
+    } catch (e) {
+        console.log('error connecting to db');
+        console.error(e);
+    } 
+    res.render('blockedusers.ejs',{blocks:result.blocks,username:req.session.username});
+}

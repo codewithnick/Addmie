@@ -504,3 +504,4 @@ nav{
 #newpost.hide:target {display:block;}
 #savedposts.hide:target {display:block;}
 #changepassword.hide:target {display:block;}
+#blocked.hide:target {display:block;}

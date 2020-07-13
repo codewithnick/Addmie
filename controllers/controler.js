@@ -212,6 +212,10 @@ module.exports=function(app){
         let query=require('../dbconnect/settings');
         query.update(req,res,client);
     });
+    app.get('/:username/blockedaccounts',loginauth,restrictionauth,function(req,res){
+        let query=require('../dbconnect/block');
+        query.loadblockedaccounts(req,res,client);
+     });
 
 
      ////////////////////////////////////////// background authenticated ajax requests //////////////////////
