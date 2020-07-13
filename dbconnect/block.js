@@ -1,4 +1,5 @@
-module.exports.blockuser=async function main(req,res,client){
+var mongodb=require('mongodb')
+module.exports.blockuser=async function blockuser(req,res,client){
     try {        
         //first add to blockedby array and blocks array ///
         var result=await client.db('profile').collection('user').updateOne({username:req.body.blockthisuserid},
@@ -12,7 +13,7 @@ module.exports.blockuser=async function main(req,res,client){
         result=await client.db('profile').collection('user').updateOne({username:req.body.blockthisuserid},
             {$pull:{friends:req.session.username}});
         //remove my saved posts
-            
+        console.log(req.body)
         
     } catch (e) {
         console.log('error connecting to db');
@@ -22,7 +23,26 @@ module.exports.blockuser=async function main(req,res,client){
 }
 
 
-module.exports.unblockuser=async function main(req,res,client){
+
+module.exports.blockthispostuser=async function main(req,res,client){
+    try {        
+
+        var result=await client.db('profile').collection('post').findOne({_id:mongodb.ObjectId(req.body.blockthispostuserid)})
+        
+       req.body.blockthisuserid=result.username
+       
+        this.blockuser(req,res,client)
+        console.log('blocked post user')
+        
+    } catch (e) {
+        console.log('error connecting to db');
+        console.error(e);
+    } 
+    
+}
+
+
+module.exports.unblockuser=async function unblock(req,res,client){
     try {        
         //first remove from blockedby array and blocks array ///
         var result=await client.db('profile').collection('user').updateOne({username:req.body.unblockthisuserid},

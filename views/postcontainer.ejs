@@ -13,13 +13,14 @@
             <li><button onclick="messagethispostuser('<%=postobj._id%>','<%=username%>','<%=postobj.username%>','True')"  >secret</button></li>
         </ul>
     </div>
-    <div class="post-image">
+    <div class="post-image flex">
         <%var imagesource='../'+postobj.blob.path%>
-        
-        <img class='onbottomimage' src="<%=imagesource%>" alt="image" style="object-fit: cover;" ondblclick="like('<%=postobj._id%>')">
-        <img class='ontopimage' src="<%=imagesource%>" alt="image" style="object-fit: contain;" ondblclick="like('<%=postobj._id%>')">
-        
-        
+        <div>
+            <img class='onbottomimage' src="<%=imagesource%>" alt="image" style="object-fit: cover;" ondblclick="like('<%=postobj._id%>')">
+        </div>
+        <div>
+            <img class='ontopimage' src="<%=imagesource%>" alt="image" style="object-fit: contain;" ondblclick="like('<%=postobj._id%>')">
+        </div>        
     </div>
    
     <span>

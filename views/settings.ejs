@@ -16,9 +16,17 @@
         dateid ='date'+settingsobj.username,
         notificationsid='notifications'+settingsobj.username,
         update='/'+settingsobj.username+'/updatesettings'
+        dp='/'+settingsobj.username+'/updatedp'
     %>
     <div class="flex flex_center">
         <div class="settings_container">
+            <form method="POST" enctype="multipart/form-data" action="<%=dp%>">
+                <i class="far fa-plus-square" >
+                    <input type="file" name='newimage' accept="image/*"  required/>
+                </i>
+                
+                <input type="submit" value="update profile picture"/>
+            </form>
             <form method="POST" action="<%=update%>">
                 <div >
                     <label>firstname</label>
@@ -97,7 +105,7 @@
                         </i>
                     </button>
                 </div>
-                <div>
+                <!-- <div>
                     <a href="#changepassword">change password</a>
                        
                 </div>
@@ -109,7 +117,7 @@
                             <input type="submit" value="change"/>
                         </form>
                    
-                </div>
+                </div> -->
                 <div>
                     <a href="/logout">Logout</a>
                 </div>

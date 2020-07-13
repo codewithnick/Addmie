@@ -20,7 +20,10 @@
                     <div><%=userobj.fname%></div>
                     <div><%=userobj.lname%></div>
                 </div>
-                <div id="profile_picture"><img src="../addmie/img/Addmie.png" alt="image" height="155px" width="155px" style="margin: 5px;"></div>
+                <div id="profile_picture">
+                    <%var imagesource='../'+userobj.dp.path%>
+                    <img src="<%=imagesource%>" alt="image" height="155px" width="155px" style="margin: 5px;">
+                </div>
                 <div id="username"><a href=><%=userobj.username%></a></div>
                 
             </div>

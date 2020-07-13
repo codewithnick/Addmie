@@ -6,7 +6,7 @@ const multer=require('multer');
 var storage=multer.diskStorage(
     {
         destination:function(req,file,cb){
-            cb(null,'addmie/post');
+            cb(null,'addmie/dp');
         },
         filename:function(req,file,cb){
             cb(null,file.fieldname+'-'+Date.now()+path.extname(file.originalname));
@@ -145,6 +145,22 @@ module.exports=function(app){
         query(req,finalimg,client);
         res.redirect('/'+req.session.username+'/profile');
     });
+    //request handling when user updates profile picture
+    app.post('/:username/updatedp',upload.single('newimage'),bodyparserencoder,loginauth,restrictionauth,function(req,res){
+        console.log('dp has been recived');
+        var img =fs.readFileSync(req.file.path)
+        var encode_img=img.toString('base64');
+        //make a new image object
+        var finalimg={
+            contentType:req.file.mimetype,
+            path:req.file.path,
+            image:new Buffer.from(encode_img,'base64')
+        };
+        //console.log(finalimg)
+        var query=require('../dbconnect/updatedp');
+        query(req,finalimg,client);
+        res.redirect('/'+req.session.username+'/settings');
+    });
     /////////////////////////////////////////home section\feed section////////////////////////////////
     app.get('/:username/home',loginauth,restrictionauth,function(req,res){//#block applied
         console.log('request for home feed');
@@ -279,7 +295,12 @@ module.exports=function(app){
         query.unblockuser(req,res,client);
         //console.log(req.body)
         });
-
+    app.post('/ajax/blockthispostuser',bodyparserencoder,loginauth,function(req,res){
+        let query=require('../dbconnect/block.js');
+        query.blockthispostuser(req,res,client);
+        //console.log(req.body)
+        });
+   
     app.get('/report',function(req,res){
         res.send('this feature is not yet updated')
     });

@@ -254,14 +254,19 @@ nav{
     padding: 3px;
 }
 .post-image{
-    box-sizing: border-box;
-    position: relative;
-}
-.post-image img{
-    position: absolute;
     height: 400px;
     width: 400px;
     margin: 5px;
+}
+.post-image div{
+    position: relative;
+    
+}
+.post-image div img{
+    position: absolute;
+    height: 400px;
+    width: 400px;
+   
 
 }
 .post-image .onbottomimage{
