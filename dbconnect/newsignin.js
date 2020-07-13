@@ -17,7 +17,7 @@ module.exports=async function main(username,password,fname,lname,dob,email,gende
         fname:fname,
         lname:lname,
         dob:dob,
-        dp:{path:'addmie/default_pic'},
+        dp:{path:'addmie/dp/default_pic'},
         email:email,
         creationdate:datetoday+' '+timenow,
         active:0,

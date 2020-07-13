@@ -170,6 +170,11 @@ nav{
     align-items: center;
     overflow: hidden;
 }
+#profile_picture img{
+    height: 155px;
+    width: 155px;
+    margin: 5px;
+}
 #username{
     color: rgba(255,255,255,1);
     background-color: rgba(255, 230, 5,0.3);
@@ -256,7 +261,7 @@ nav{
 .post-image{
     height: 400px;
     width: 400px;
-    margin: 5px;
+   padding: 5px;
 }
 .post-image div{
     position: relative;
@@ -266,13 +271,13 @@ nav{
     position: absolute;
     height: 400px;
     width: 400px;
-   
 
 }
 .post-image .onbottomimage{
     filter: blur(7px);
     clip: rect(0,400px,400px,0);
 }
+
 .friends-container a{
     color: black;
     text-decoration: none; 

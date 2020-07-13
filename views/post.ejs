@@ -7,7 +7,8 @@
     <link rel="Stylesheet" href="../addmie/css/styles.css">
     <link rel="stylesheet" type="text/css" href="../addmie/css/gaurav.css">  
     <link rel="stylesheet" type="text/css" href="../addmie/css/post.css"> 
-    <title>Settings</title>
+    <link rel="stylesheet" type="text/css" href="addmie/css/mobile.css">
+    <title>post</title>
 </head>
 <body>
     <%-include('header.ejs',{username:username})%>
@@ -59,7 +60,7 @@
                         <span><%-include('accountheader.ejs',{friend:postobj.likes[i]})%></span>
                     <%}%>
                 </div>
-                <div id="comments" class="flex hide" >
+                <div id="comments" class="flex flex_center hide" >
                     
                     <div id='newcomment' class="flex">                        
                         <div class="flex flex_column flex_center">
@@ -83,7 +84,7 @@
                         </span>
                     </div>
                     <%for(i=0;i< comments.length;i++){%>
-                    <div class="flex flex_center"><%-include('comment.ejs',{comment:comments[i]})%></div>
+                    <div style="width: 80%;" class="flex flex_center"><%-include('comment.ejs',{comment:comments[i]})%></div>
                     <%}%>
                 </div>
                 <div id="shares" class="flex hide" >

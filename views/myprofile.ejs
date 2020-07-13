@@ -6,8 +6,9 @@
     <link rel = "icon" type = "image/png" href = "../addmie/img/Addmie.png"> 
     <link rel="Stylesheet" href="../addmie/css/styles.css">
     <link rel="stylesheet" type="text/css" href="../addmie/css/gaurav.css">  
- 
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="addmie/css/mobile.css">
+
+    <title>myprofile</title>
 </head>
 <body>
     <%- include('header.ejs',({username:userobj.username}))%>
@@ -21,7 +22,7 @@
                 </div>
                 <div id="profile_picture">
                     <%var imagesource='../'+userobj.dp.path%>
-                    <img src="<%=imagesource%>" alt="image" height="155px" width="155px" style="margin: 5px;">
+                    <img src="<%=imagesource%>" alt="image" >
                 </div>
                 <div id="username" ><a href=><%=userobj.username%></a></div>
                

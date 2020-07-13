@@ -1,0 +1,59 @@
+@media only screen and (max-width: 767px) {
+    *{
+        font-size: 12px;
+    }
+    #bio{
+        display: none;
+    }
+    #profile_picture{
+        height: 100px;
+        width: 100px;
+    }
+    #profile_picture img{
+        height: 100px;
+        width: 100px;
+    }
+    .name div
+    {
+        font-size: 14px;
+    }
+    #containerbar h1 ,#containerbar h2{
+        font-size: 12px;
+    }
+    #username a{
+        font-size: 12px;
+    }
+    .myprofilepostselect div a {
+        font-size: 16px;
+    }
+    .post_profile_picture{
+       padding: 0px;
+
+    }
+    .post-image,.post-image div img{
+        height: 250px;
+        width: 250px;
+    }
+    .post-image{
+        border: 1px solid rgba(65, 65, 65,0.234);
+    }
+    .menu{
+        margin-left: 75px;
+        margin-top: 75px;
+    }
+
+    .postbox{
+        flex-direction: column;
+        padding: 0px;
+        width: 300px;
+    }
+    #likes ,#comments,#saves,#shares{
+        border-left: none;
+    }
+    #comments{
+        align-items: center;
+    }
+    #comments >div.flex {
+        width: 80%;
+    }
+}
