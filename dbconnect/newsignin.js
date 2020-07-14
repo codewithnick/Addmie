@@ -51,7 +51,7 @@ module.exports=async function main(username,password,fname,lname,dob,email,gende
         console.error(e);
     } finally {
         //await client.close();
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(resolve => setTimeout(resolve, 7000));
     }
 }
 }

@@ -18,14 +18,14 @@ module.exports.login=async function main(userobj,res,req,client){
     try {
         // Connect to the MongoDB cluster
         //await client.connect();
-        console.log('client connected sucessfully');
+        //console.log('client connected sucessfully');
         // Make the appropriate DB calls
         await  fetchuser(client,userobj);
         if(exists){
-            console.log('loading profile page');
+            //console.log('loading profile page');
         }
         else{
-            console.log('oops invalid user');
+            //console.log('oops invalid user');
         }
     } catch (e) {
         console.error(e);
