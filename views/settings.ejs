@@ -106,19 +106,19 @@
                         </i>
                     </button>
                 </div>
-                <!-- <div>
+                <div>
                     <a href="#changepassword">change password</a>
                        
                 </div>
 
                 <div>                    
-                        <form class=" hide" id="changepassword">
-                            <input type="text" placeholder="old password"/>
-                            <input type="text" name="" id="newpassword" placeholder="newpassword"/>
+                        <form class=" hide" id="changepassword" action="/changepassword" method="POST">
+                            <input type="text" name="oldpassword" placeholder="old password"/>
+                            <input type="text" name="newpassword" id="newpassword" placeholder="newpassword"/>
                             <input type="submit" value="change"/>
                         </form>
                    
-                </div> -->
+                </div>
                 <div>
                     <a href="/logout">Logout</a>
                 </div>

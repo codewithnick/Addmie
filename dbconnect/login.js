@@ -2,7 +2,7 @@ var exists=false;
 var result=null;
 async function fetchuser(client,userobj){
     //console.log('finding',userobj);
-    result=await client.db('profile').collection('user').findOne(userobj);
+    result=await client.db('profile').collection('pass').findOne(userobj);
     if(result){console.log('user found '+result.username);exists=true;}
     else{console.log('invalid username or password');}
    

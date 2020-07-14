@@ -59,3 +59,24 @@ module.exports.change=async function main(req,res,client)
     
     res.end('changed settings')
 }
+module.exports.changepassword=async function main(req,res,client)
+{
+    try{
+var result=await client.db('profile').collection('pass').findOne({username:req.session.username,password:req.body.oldpassword});
+if(result){
+    result=await client.db('profile').collection('pass').updateOne({username:req.session.username},{$set:{password:req.body.newpassword}});
+    
+    res.redirect('/logout')
+}
+else{
+    res.send('wrong password')
+}
+    }
+    catch (e) {
+    
+        console.log('error connecting to db');
+        console.error(e);
+    }
+    
+   
+}

@@ -6,7 +6,7 @@ const multer=require('multer');
 var storage=multer.diskStorage(
     {
         destination:function(req,file,cb){
-            cb(null,'addmie/dp');
+            cb(null,'addmie/post');
         },
         filename:function(req,file,cb){
             cb(null,file.fieldname+'-'+Date.now()+path.extname(file.originalname));
@@ -15,6 +15,19 @@ var storage=multer.diskStorage(
     console.log('disk')
 );
 var upload =multer({storage:storage});
+var storagedp=multer.diskStorage(
+    {
+        destination:function(req,file,cb){
+            cb(null,'addmie/dp');
+        },
+        filename:function(req,file,cb){
+            cb(null,req.session.username+path.extname(file.originalname));
+        },
+    },
+    console.log('disk')
+);
+
+var uploaddp =multer({storage:storagedp});
 //connecting to db client 
 let dbconnect=require('../dbconnect/connect');
 const MongoClient=dbconnect.MongoClient;
@@ -146,7 +159,7 @@ module.exports=function(app){
         res.redirect('/'+req.session.username+'/profile');
     });
     //request handling when user updates profile picture
-    app.post('/:username/updatedp',upload.single('newimage'),bodyparserencoder,loginauth,restrictionauth,function(req,res){
+    app.post('/:username/updatedp',uploaddp.single('newimage'),bodyparserencoder,loginauth,restrictionauth,function(req,res){
         console.log('dp has been recived');
         var img =fs.readFileSync(req.file.path)
         var encode_img=img.toString('base64');
@@ -308,6 +321,11 @@ module.exports=function(app){
     app.get('/report',function(req,res){
         res.send('this feature is not yet updated')
     });
+    app.post('/changepassword',bodyparserencoder,loginauth,function(req,res){
+        let query=require('../dbconnect/settings.js');
+        query.changepassword(req,res,client);
+        //console.log(req.body)
+        });
     console.log('closing connection to db');
     client.close();
 

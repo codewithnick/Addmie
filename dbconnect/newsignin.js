@@ -1,5 +1,6 @@
 async function adduser(client,userobj){
     let result=await client.db('profile').collection('user').insertOne(userobj);
+
     //console.log('new user added');
    // console.log(result);
 
@@ -11,9 +12,9 @@ module.exports=async function main(username,password,fname,lname,dob,email,gende
     let yyyy = today.getFullYear() ;
     var datetoday=mm+'/'+dd+'/'+yyyy;
     var timenow = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let result=await client.db('profile').collection('pass').insertOne({username:username,password:password});
     let userobj={
         username:username,
-        password:password,
         fname:fname,
         lname:lname,
         dob:dob,
