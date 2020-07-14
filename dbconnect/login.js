@@ -3,8 +3,14 @@ var result=null;
 async function fetchuser(client,userobj){
     //console.log('finding',userobj);
     result=await client.db('profile').collection('pass').findOne(userobj);
-    if(result){console.log('user found '+result.username);exists=true;}
-    else{console.log('invalid username or password');}
+    if(result){
+       // console.log('user found '+result.username);
+    exists=true;
+}
+    else{
+        
+        //console.log('invalid username or password');
+}
    
 };
 module.exports.login=async function main(userobj,res,req,client){
@@ -29,13 +35,14 @@ module.exports.login=async function main(userobj,res,req,client){
     if(exists){
         //console.log(exists);
         req.session.username=result.username;
-        console.log('loggin in account of'+result.username);
+       // console.log('loggin in account of'+result.username);
         res.redirect('/'+result.username+'/profile');
         
     }
     else{
-        console.log('invalid userid or password');
+        //console.log('invalid userid or password');
         //window.alert('ivalid username or password');
-        res.redirect('/');
+        //res.redirect('/');
+        res.send('invalid username or password')
     }
 }

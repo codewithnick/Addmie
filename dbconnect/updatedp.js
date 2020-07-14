@@ -18,7 +18,7 @@ module.exports = async function dbconnect(req,image,client)
         console.error(e);
 
     } finally {
-        console.log('closing client connection');
+        //console.log('closing client connection');
         //await client.close();
     
     }

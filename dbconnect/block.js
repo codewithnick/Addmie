@@ -13,7 +13,7 @@ module.exports.blockuser=async function blockuser(req,res,client){
         result=await client.db('profile').collection('user').updateOne({username:req.body.blockthisuserid},
             {$pull:{friends:req.session.username}});
         //remove my saved posts
-        console.log(req.body)
+        //console.log(req.body)
         
     } catch (e) {
         console.log('error connecting to db');
@@ -32,7 +32,7 @@ module.exports.blockthispostuser=async function main(req,res,client){
        req.body.blockthisuserid=result.username
        
         this.blockuser(req,res,client)
-        console.log('blocked post user')
+        //console.log('blocked post user')
         
     } catch (e) {
         console.log('error connecting to db');

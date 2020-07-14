@@ -7,7 +7,7 @@ var timenow = today.getHours() + ":" + today.getMinutes() + ":" + today.getSecon
 module.exports = async function dbconnect(obj,res,client)
 {   
     var x=require('mongodb').ObjectId();
-    console.log(x);
+    //console.log(x);
     var viewers=[];
     if(obj.secret=='null'){
         viewers.push(obj.from)
@@ -52,7 +52,7 @@ module.exports = async function dbconnect(obj,res,client)
         await res.render('addmie.ejs')
     } 
     //res.end('success')
-    console.log('trying to redirect');
+   // console.log('trying to redirect');
     res.send({convoid:x})
-    console.log('ok redrected');
+   // console.log('ok redrected');
 }

@@ -31,7 +31,7 @@ module.exports=async function main(username,req,res,client,friendname){
     }
     //if user doesnt exist
     if(exists==null){
-        console.log('page does not exist')
+        //console.log('page does not exist')
         res.redirect('/'+username+'/profile');
     }
     //if user is blocked

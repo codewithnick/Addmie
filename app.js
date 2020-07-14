@@ -8,7 +8,7 @@ var port=process.env.port || 4000;
 /* var connectdb=require(path.join(__dirname+'../../..'+'/dbconnect/connect.js'));
 connectdb(); */
 var controler=require('./controllers/controler');
-console .log('server started');
+//console .log('server started');
 var app = express();
 app.use(cookieParser());
 app.set('trust proxy', 1) // trust first proxy
@@ -30,5 +30,5 @@ app.use(express.static(path.join(__dirname)));
 app.use('/:username',express.static(path.join(__dirname)));
 //request handling when root dir is requested
 //listening at port
-console.log('listening at port '+port) ;
+//console.log('listening at port '+port) ;
 app.listen(port);

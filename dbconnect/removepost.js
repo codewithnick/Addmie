@@ -4,7 +4,7 @@ module.exports = async function dbconnect(req,res,client)
         var result =await client.db('profile').collection('post').deleteOne({_id:mongodb.ObjectId(req.query.id)})
         } catch (e) {
     } 
-    console.log('deleting post ',req.query.id)
+    //console.log('deleting post ',req.query.id)
     res.end('deleted')
     
 }

@@ -25,7 +25,7 @@ module.exports = async function dbconnect(req,res,client)
            userobjs.push(element.username);
        }
        result=await client.db('profile').collection('user').find({username:{$in:userobjs}}).toArray();
-        console.log(result,userobjs);
+        //console.log(result,userobjs);
         //console.log(posts);
     } catch (e) {
         console.log('error connecting to db');

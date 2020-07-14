@@ -12,7 +12,7 @@ var storage=multer.diskStorage(
             cb(null,file.fieldname+'-'+Date.now()+path.extname(file.originalname));
         },
     },
-    console.log('disk')
+    //console.log('disk')
 );
 var upload =multer({storage:storage});
 var storagedp=multer.diskStorage(
@@ -24,7 +24,7 @@ var storagedp=multer.diskStorage(
             cb(null,req.session.username+path.extname(file.originalname));
         },
     },
-    console.log('disk')
+    //console.log('disk')
 );
 
 var uploaddp =multer({storage:storagedp});
@@ -41,7 +41,7 @@ const loginauth=(req,res,next)=>{
         }
     else{
             res.redirect('/');
-            console.log('looks like youve been logged out of the session login to continue');
+            //console.log('looks like youve been logged out of the session login to continue');
         }
 };
 const restrictionauth=(req,res,next)=>{
@@ -49,10 +49,10 @@ const restrictionauth=(req,res,next)=>{
         next();
         }
     else{
-            console.log(req.session.username)
-            console.log(req.params.username)
+           // console.log(req.session.username)
+            //console.log(req.params.username)
             res.redirect('/'+req.session.username+'/profile');
-            console.log('this page is restricted');
+            //console.log('this page is restricted');
         }
 };
 bodyparserencoder = bodyparserencoder.urlencoded({ extended: true })
@@ -76,7 +76,7 @@ module.exports=function(app){
         let query=require('../dbconnect/newsignin.js');
         query(req.body.Username,req.body.Password,req.body.Fname,req.body.Lname
             ,req.body.DOB,req.body.Email,req.body.Gender,req.body.City,client);
-
+            
         query=require('../dbconnect/login.js');
         exists=query.login({username:req.body.Username,password:req.body.Password},res,req);       
         //move to profile page directly
@@ -89,7 +89,7 @@ module.exports=function(app){
         req.session.destroy();       
         }
         else{
-            console.log('login to continue');
+           // console.log('login to continue');
         }
         res.redirect('/');
         
@@ -97,7 +97,7 @@ module.exports=function(app){
 
     //request handling fro post view
     app.get('/post',loginauth,function(req,res){//#block applied
-        console.log(req.query.id);
+        //console.log(req.query.id);
         var query=require('../dbconnect/loadpost');
         query(req,res,client);
 
@@ -110,28 +110,28 @@ module.exports=function(app){
     //////////own account login///////////
     app.get('/:username/profile',loginauth,restrictionauth,function(req,res){
         if(req.params.username==req.session.username){
-            console.log('get request to profile');
+            //console.log('get request to profile');
             var userobj={
                 username:req.params.username,
             };
             let fetch=require('../dbconnect/fetch.js');
             const fname=null;
             fetch(req.params.username,res,client);
-            console.log('profile loaded');
+            //console.log('profile loaded');
         }
         else{
-            console.log('restricted')
+            //console.log('restricted')
             res.redirect('/'+req.session.username+'/profile')
         }
     });
     ////////to view others account///////////
     app.get('/profile/:username',loginauth,function(req,res){//#block applied
         if(req.session.username==req.params.username){
-            console.log('oops wrong url')
+            //console.log('oops wrong url')
             res.redirect('/'+req.session.username+'/profile')
         }
         else{
-            console.log('get request for profile');
+            //console.log('get request for profile');
            
             let fetch=require('../dbconnect/loadprofile.js');
             
@@ -144,7 +144,7 @@ module.exports=function(app){
 
     //request handling when user posts
     app.post('/:username/sendpost',upload.single('newimage'),bodyparserencoder,loginauth,restrictionauth,function(req,res){
-        console.log('post has been recived');
+        //console.log('post has been recived');
         var img =fs.readFileSync(req.file.path)
         var encode_img=img.toString('base64');
         //make a new image object
@@ -160,7 +160,7 @@ module.exports=function(app){
     });
     //request handling when user updates profile picture
     app.post('/:username/updatedp',uploaddp.single('newimage'),bodyparserencoder,loginauth,restrictionauth,function(req,res){
-        console.log('dp has been recived');
+        //console.log('dp has been recived');
         var img =fs.readFileSync(req.file.path)
         var encode_img=img.toString('base64');
         //make a new image object
@@ -176,7 +176,7 @@ module.exports=function(app){
     });
     /////////////////////////////////////////home section\feed section////////////////////////////////
     app.get('/:username/home',loginauth,restrictionauth,function(req,res){//#block applied
-        console.log('request for home feed');
+        //console.log('request for home feed');
         let query =require('../dbconnect/homepage.js');
         query(req.session.username,res,client);
     });
@@ -189,7 +189,7 @@ module.exports=function(app){
      app.get('/:username/direct',loginauth,restrictionauth,function(req,res){
         let query =require('../dbconnect/loadmessages.js');//correct this
         query(req.session.username,res,client);
-        console.log('loading messages')
+       // console.log('loading messages')
         
      });
 
@@ -207,7 +207,7 @@ module.exports=function(app){
         let query =require('../dbconnect/sendnewmessage.js');
         //console.log(req.query.secret)
         query(req.session.username,req,res,client,req.params.friendname);
-        console.log('sending neww message from '+req.session.username+' to '+req.params.friendname);
+        //console.log('sending neww message from '+req.session.username+' to '+req.params.friendname);
      });
 
 
@@ -220,8 +220,8 @@ module.exports=function(app){
      });
 
      app.post('/:username/updatesettings',bodyparserencoder,loginauth,restrictionauth,function(req,res){
-        console.log('updatingsettings');
-        console.log(req.body)
+        //console.log('updatingsettings');
+        //console.log(req.body)
         let query=require('../dbconnect/settings');
         query.update(req,res,client);
     });
@@ -262,7 +262,7 @@ module.exports=function(app){
         let query=require('../dbconnect/appendmessage.js');
         query(req.body,req.session.username,res,client);
         //console.log(req.body.convoid)
-        console.log('trying to send new message')
+        //console.log('trying to send new message')
      });
                 ////////////////////////////////post dealing////////////////////////////////////
                              ////////////////////////liking a post//////////////////
@@ -326,7 +326,7 @@ module.exports=function(app){
         query.changepassword(req,res,client);
         //console.log(req.body)
         });
-    console.log('closing connection to db');
+    //console.log('closing connection to db');
     client.close();
 
 }

@@ -6,7 +6,7 @@ module.exports = async function dbconnect(req,res,client)
        try {
         // Connect to the MongoDB cluster
         //await client.connect();
-        console.log('client connected sucessfully');
+        //console.log('client connected sucessfully');
         // Make the appropriate DB calls
         result=await client.db('profile').collection('user').findOne({username:req.params.username});
         myfriends=await client.db('profile').collection('user').findOne({username:req.session.username});
@@ -19,7 +19,7 @@ module.exports = async function dbconnect(req,res,client)
         console.error(e);
         await res.render('addmie.ejs')
     } finally {
-        console.log('closing client connection');
+        //console.log('closing client connection');
         //await client.close();
         //console.log(myfriends);
         result.fans=fans

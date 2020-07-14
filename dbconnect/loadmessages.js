@@ -12,7 +12,7 @@ module.exports=async function main(username,res,client){
     for (let i = 0; i < result.length; i++) {
         const element = result[i];
         if(element.participants.includes({name:username})){
-            console.log('found')
+            //console.log('found')
         }
     //console.log(result[1]._id)    
     }
