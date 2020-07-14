@@ -6,6 +6,15 @@ async function adduser(client,userobj){
 
 };
 module.exports=async function main(username,password,fname,lname,dob,email,gender,city,client){
+    let result=await client.db('profile').collection('pass').findOne(
+        {username:username}
+    );
+    if(result){
+        result.send('username is not unique please try again')
+    }
+    else{
+
+    
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -44,4 +53,5 @@ module.exports=async function main(username,password,fname,lname,dob,email,gende
         //await client.close();
         await new Promise(resolve => setTimeout(resolve, 2000));
     }
+}
 }
