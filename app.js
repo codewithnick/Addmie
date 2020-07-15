@@ -3,7 +3,7 @@ var express=require('express');
 var session=require('express-session');
 var path=require('path');
 var cookieParser = require('cookie-parser');
-var port=process.env.port || 4000;
+var port=process.env.PORT || 4000;
 //to check db connection disabled for now due to interruptions
 /* var connectdb=require(path.join(__dirname+'../../..'+'/dbconnect/connect.js'));
 connectdb(); */
