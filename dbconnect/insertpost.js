@@ -10,6 +10,8 @@ module.exports = async function dbconnect(req,image,client)
         let dd = String(today.getDate()).padStart(2, '0');
         let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         let yyyy = today.getFullYear()    
+        var datetoday=mm+'/'+dd+'/'+yyyy;
+        var timenow = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         var postobj={
             _id:id,
             username:req.session.username,
@@ -19,7 +21,7 @@ module.exports = async function dbconnect(req,image,client)
             shares:[],
             saves:[],
             rating:0,
-            creationdate:mm+'/'+dd+'/'+yyyy,
+            creationdate:datetoday+' '+timenow,
             blob:image
         };
        try {

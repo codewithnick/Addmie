@@ -56,4 +56,8 @@
     #comments >div.flex {
         width: 80%;
     }
+    .profileoptions button,.profileoptions a{
+        font-size: 10px;
+        width: fit-content;
+    }
 }

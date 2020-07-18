@@ -14,6 +14,18 @@ module.exports = async function dbconnect(req,res,client)
         fans=await client.db('profile').collection('user').countDocuments({friends:req.params.username});
         //console.log(fans);
         //console.log(posts);
+        for(i=0;i<posts.length;i++){
+            let fs=require("fs")
+            let yourBuffer=posts[i].blob.image.buffer
+            let buffer = new Buffer.from(yourBuffer)
+            fs.writeFileSync(posts[i].blob.path, buffer, "binary", function (err, written) {
+                if (err) console.log(err);
+                else {
+                    //console.log("Successfully written");
+                    //res.sendFile((__dirname + `location of image/imagename.yourimageextension`))
+                }
+            });
+    }
     } catch (e) {
         console.log('error connecting to db');
         console.error(e);

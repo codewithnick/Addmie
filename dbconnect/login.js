@@ -1,18 +1,6 @@
 var exists=false;
 var result=null;
-async function fetchuser(client,userobj){
-    //console.log('finding',userobj);
-    result=await client.db('profile').collection('pass').findOne(userobj);
-    if(result){
-       // console.log('user found '+result.username);
-    exists=true;
-}
-    else{
-        
-        //console.log('invalid username or password');
-}
-   
-};
+
 module.exports.login=async function main(userobj,res,req,client){
     
     try {
@@ -20,7 +8,20 @@ module.exports.login=async function main(userobj,res,req,client){
         //await client.connect();
         //console.log('client connected sucessfully');
         // Make the appropriate DB calls
-        await  fetchuser(client,userobj);
+       
+        //console.log('finding',userobj);
+       // console.log(client)
+            result=await client.db('profile').collection('pass').findOne(userobj);
+            if(result){
+            // console.log('user found '+result.username);
+            exists=true;
+        }
+            else{
+                
+                //console.log('invalid username or password');
+        }
+        
+
         if(exists){
             //console.log('loading profile page');
         }

@@ -1,16 +1,11 @@
-async function adduser(client,userobj){
-    let result=await client.db('profile').collection('user').insertOne(userobj);
 
-    //console.log('new user added');
-   // console.log(result);
-
-};
-module.exports=async function main(username,password,fname,lname,dob,email,gender,city,client){
+module.exports=async function main(username,password,fname,lname,dob,email,gender,city,req,res,client){
     let result=await client.db('profile').collection('pass').findOne(
         {username:username}
     );
     if(result){
-        result.send('username is not unique please try again')
+        console.log(result)
+        res.send('username is not unique please try again')
     }
     else{
 
@@ -45,13 +40,18 @@ module.exports=async function main(username,password,fname,lname,dob,email,gende
         //await client.connect();
         //console.log('client connected sucessfully');
         // Make the appropriate DB calls
-        await  adduser(client,userobj);
+        await client.db('profile').collection('user').insertOne(userobj);
+
+        await new Promise(r => setTimeout(r, 1500));
+        res.redirect('/');
+
     } catch (e) {
         console.log('error connecting to db');
         console.error(e);
     } finally {
+        
         //await client.close();
-        await new Promise(resolve => setTimeout(resolve, 7000));
+        //res.send('you have been registered now<a href="/login"> return to the page</a> and login')
     }
 }
 }

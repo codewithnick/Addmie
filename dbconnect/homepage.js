@@ -31,9 +31,28 @@ module.exports=async function main(username,res,client){
                         
             )
         .limit(15)
+        .sort('creationdate',-1)
         .toArray();
-        //console.log(result)
-    
+        //console.log(result[0].blob.image,result[0].blob.path)
+       /*  const base64ToImage = require('base64-to-image');
+
+        const base64Str = result[0].blob.image;
+        const path = result[0].blob.path; // Add trailing slash
+        
+
+        const { imageType, fileName } = base64ToImage(base64Str, path); // Only synchronous using */
+        for(i=0;i<result.length;i++){
+            let fs=require("fs")
+            let yourBuffer=result[i].blob.image.buffer
+            let buffer = new Buffer.from(yourBuffer)
+            fs.writeFileSync(result[i].blob.path, buffer, "binary", function (err, written) {
+                if (err) console.log(err);
+                else {
+                    //console.log("Successfully written");
+                    //res.sendFile((__dirname + `location of image/imagename.yourimageextension`))
+                }
+            });
+    }
     } catch (e) {
         console.log('error connecting to db');
         console.error(e);

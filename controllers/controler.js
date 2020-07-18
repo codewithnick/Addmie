@@ -75,10 +75,9 @@ module.exports=function(app){
         //if validated sucessfully then fire insert query in database
         let query=require('../dbconnect/newsignin.js');
         query(req.body.Username,req.body.Password,req.body.Fname,req.body.Lname
-            ,req.body.DOB,req.body.Email,req.body.Gender,req.body.City,client);
+            ,req.body.DOB,req.body.Email,req.body.Gender,req.body.City,req,res,client);
             
-        query=require('../dbconnect/login.js');
-        exists=query.login({username:req.body.Username,password:req.body.Password},res,req);       
+               
         //move to profile page directly
     });
     /////////////////////////////////////////////// session pages ////////////////////////////////////////  

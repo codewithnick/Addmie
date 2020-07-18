@@ -19,7 +19,18 @@ module.exports=async function main(req,res,client){
             names.push(element)
         }
         var blockedaccount=await client.db('profile').collection('user').findOne({username:post.username});
-        
+        for(i=0;i<post.length;i++){
+            let fs=require("fs")
+            let yourBuffer=post[i].blob.image.buffer
+            let buffer = new Buffer.from(yourBuffer)
+            fs.writeFileSync(post[i].blob.path, buffer, "binary", function (err, written) {
+                if (err) console.log(err);
+                else {
+                    //console.log("Successfully written");
+                    //res.sendFile((__dirname + `location of image/imagename.yourimageextension`))
+                }
+            });
+    }
     } catch (e) {
         console.log('error connecting to db');
         console.error(e);
