@@ -1,4 +1,4 @@
-# facebook-by-nick--v-2
+# ADDMIE
 
 Tried to create an instagram/facebook clone with a few better features and a better interface  and UI
 this app works on nodejs has an express server and a mongodb database it is deployed remotely for trial on 
