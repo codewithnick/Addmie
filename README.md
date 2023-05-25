@@ -2,7 +2,7 @@
 
 Tried to create an instagram/facebook clone with a few better features and a better interface  and UI
 this app works on nodejs has an express server and a mongodb database it is deployed remotely for trial on 
-https://addmie.herokuapp.com/
+[https://addmie.onrender.com](https://addmie.onrender.com)
 
 
 
